@@ -39,7 +39,6 @@ public class DominoGameState {
         player3Score = 0;
         player4Score = 0;
 
-
         // Initializes hands and board to starting set
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
@@ -58,7 +57,6 @@ public class DominoGameState {
             player4Hand.add(board.remove(0));
         }
     }
-
 
     //
     //
