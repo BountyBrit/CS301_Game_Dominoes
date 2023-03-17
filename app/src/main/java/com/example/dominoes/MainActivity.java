@@ -7,10 +7,14 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-/*
-@author Jackson , Brit, Alex
+/** MainActivity
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,9 +1,15 @@
-package com.example.dominoes;
+package GameFramework;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
-@author Jackson , Brit, Alex
+
+/** Player
+ * This class has all of the relevant information for a player
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
  */
 public class Player {
     private String name;

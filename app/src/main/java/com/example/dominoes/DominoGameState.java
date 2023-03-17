@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-/*
-@author Jackson , Brit, Alex
+
+/** DominoGameState
+ * This class is the GameState of the Domino Game
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
  */
 public class DominoGameState {
 
@@ -30,7 +35,7 @@ public class DominoGameState {
     private ArrayList<Integer> boneyard;
 
 
-    public DominoGameState() {
+    public void DominoeGameState() {
         //Initialises the game state
         player1Hand = new ArrayList<Integer>();
         player2Hand = new ArrayList<Integer>();
@@ -60,32 +65,6 @@ public class DominoGameState {
             player3Hand.add(board.remove(0));
             player4Hand.add(board.remove(0));
         }
-
-        //initialize boneyard
-        //Domino domino = new Domino(1,2);
-        //boneyard.add(domino);
-    }
-
-    public DominoGameState(DominoGameState other, int playerIndex) {
-        // copy the board
-        board = new ArrayList<>(other.board.size());
-        for (Integer d : other.board) {
-            board.add(new Integer(d));
-        }
-
-        // copy the boneyard
-        boneyard = new ArrayList<>(other.boneyard.size());
-        for (Integer d : other.boneyard) {
-            boneyard.add(new Integer(d));
-        }
-        //cope the player's hands
-        //ADD MORE CODE//
-
-        //copy the scores
-        scores = new int[]{other.scores[0], other.scores[1]};
-
-        //current player
-        currentPlayer = other.currentPlayer;
     }
 
     //
@@ -282,20 +261,25 @@ public class DominoGameState {
         return sb.toString();
     }//toString()
 
-    public boolean placeDomino(Domino tile, Player player) {
-        if(player.hasDomino(tile)) {
-            player.removeDominoFromHand(tile);
-            return true;
+    public DominoGameState(DominoGameState other, int playerIndex) {
+        //copy the board
+        board = new ArrayList<>(other.board.size());
+        for (Integer d : other.board) {
+            board.add(new Integer(d));
         }
-        return false;
-    }
 
-    public boolean drawDomino(Player player) {
-        Random RNG = new Random();
-        int num = RNG.nextInt(boneyard.size());
-        //this line works when boneyard consists of dominos instead of ints
-        //player.addDominoToHand(boneyard.get(num);
-        //boneyard.remove(num);
-        return false;
+        //copy the boneyard
+        boneyard = new ArrayList<>(other.boneyard.size());
+        for (Integer d : other.boneyard) {
+            boneyard.add(new Integer(d));
+        }
+        //copy the player's hands
+        //ADD MORE CODE//
+
+        //copy the scores
+        scores = new int[]{other.scores[0], other.scores[1]};
+
+        //current player
+        currentPlayer = other.currentPlayer;
     }
 }

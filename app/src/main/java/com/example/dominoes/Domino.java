@@ -1,6 +1,13 @@
-package com.example.dominoes;
-/*
-@author Jackson , Brit, Alex
+package GameFramework;
+
+/** Domino
+ * This class has all of the relevant information for a domino
+ * The end1 and end2 are the sides of the dominoes with numbers/dots on them
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
  */
 public class Domino {
     private int end1;
