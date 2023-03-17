@@ -15,6 +15,7 @@ public class DominoGameStat {
 
     private int player3Score;
     private int player4Score;
+
     public class DominoeGameState {
 
         public DominoeGameState(){
@@ -27,13 +28,16 @@ public class DominoGameStat {
             currentPlayer = 1;
             player1Score = 0;
             player2Score = 0;
+            player3Score = 0;
             player4Score = 0;
         }
 
     }
+
+    //
+    //
     //These are the getters and setters for the game, which includes the
     //score, current player/turn, and each players hand.
-    //
     //
 
     //Gets player 1 domino hand
