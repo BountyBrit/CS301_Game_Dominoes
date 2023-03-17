@@ -1,9 +1,13 @@
 package com.example.dominoes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class DominoGameState {
+
+    // instance variables for the game state
+    private int[] scores;
     private ArrayList<Integer> player1Hand;
     private ArrayList<Integer> player2Hand;
     private ArrayList<Integer> player3Hand;
@@ -16,6 +20,8 @@ public class DominoGameState {
 
     private int player3Score;
     private int player4Score;
+
+    private ArrayList<Integer> boneyard;
 
 
     public void DominoeGameState() {
@@ -162,4 +168,87 @@ public class DominoGameState {
     public void setPlayer4Score(int player4Score) {
         this.player4Score = player4Score;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Board: ");
+        if (board.isEmpty()) {
+            sb.append("Empty");
+        } else {
+            for (Integer d : board) {
+                sb.append(d.toString() + " ");
+            }
+        }
+        sb.append("\n");
+
+        sb.append("Boneyard: ");
+        if (boneyard.isEmpty()) {
+            sb.append("Empty");
+        } else {
+            for (Integer d : boneyard) {
+                sb.append(d.toString() + " ");
+            }
+        }
+        sb.append("\n");
+
+        for (int i = 0; i < player1Hand.size(); i++) {
+            sb.append("Hand for Player " + (i+1) + ": ");
+            if ((player1Hand.get(i)) == null) {
+                sb.append("Empty");
+            } else {
+                for (Integer d : player1Hand) {
+                    sb.append(d.toString() + " ");
+                }
+            }
+            sb.append("\n");
+        }//player1
+
+        for (int i = 0; i < player2Hand.size(); i++) {
+            sb.append("Hand for Player " + (i+1) + ": ");
+            if ((player2Hand.get(i)) == null) {
+                sb.append("Empty");
+            } else {
+                for (Integer d : player2Hand) {
+                    sb.append(d.toString() + " ");
+                }
+            }
+            sb.append("\n");
+        }//player3
+
+        for (int i = 0; i < player3Hand.size(); i++) {
+            sb.append("Hand for Player " + (i+1) + ": ");
+            if ((player3Hand.get(i)) == null) {
+                sb.append("Empty");
+            } else {
+                for (Integer d : player3Hand) {
+                    sb.append(d.toString() + " ");
+                }
+            }
+            sb.append("\n");
+        }//player3
+
+        for (int i = 0; i < player4Hand.size(); i++) {
+            sb.append("Hand for Player " + (i+1) + ": ");
+            if ((player4Hand.get(i)) == null) {
+                sb.append("Empty");
+            } else {
+                for (Integer d : player4Hand) {
+                    sb.append(d.toString() + " ");
+                }
+            }
+            sb.append("\n");
+        }//player4
+
+        sb.append("Scores: ");
+        sb.append(Arrays.toString(scores));
+        sb.append("\n");
+
+        sb.append("Current player: ");
+        sb.append(currentPlayer + 1);
+        sb.append("\n");
+
+        return sb.toString();
+    }//toString()
+
 }
