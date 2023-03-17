@@ -40,8 +40,8 @@ public class DominoGameState {
         player4Score = 0;
 
         // Initializes hands and board to starting set
-        for (int i = 0; i <= 6; i++) {
-            for (int j = i; j <= 6; j++) {
+        for (int i = 0; i <= 7; i++) {
+            for (int j = i; j <= 7; j++) {
                 //Adds all possible domino pieces to the draw pile
                 board.add(i * 10 + j);
             }
