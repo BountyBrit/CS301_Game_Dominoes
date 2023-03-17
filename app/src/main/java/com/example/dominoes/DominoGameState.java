@@ -5,6 +5,7 @@ import android.app.GameState;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class DominoGameState {
 
@@ -252,4 +253,25 @@ public class DominoGameState {
         return sb.toString();
     }//toString()
 
+    public DominoGameState(DominoGameState other, int playerIndex) {
+        // copy the board
+        board = new ArrayList<>(other.board.size());
+        for (Integer d : other.board) {
+            board.add(new Integer(d));
+        }
+
+        // copy the boneyard
+        boneyard = new ArrayList<>(other.boneyard.size());
+        for (Integer d : other.boneyard) {
+            boneyard.add(new Integer(d));
+        }
+        //cope the player's hands
+        //ADD MORE CODE//
+
+        //copy the scores
+        scores = new int[]{other.scores[0], other.scores[1]};
+
+        //current player
+        currentPlayer = other.currentPlayer;
+    }
 }
