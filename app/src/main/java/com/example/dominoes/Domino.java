@@ -1,5 +1,7 @@
-package GameFramework;
-
+package com.example.dominoes;
+/*
+@author Jackson , Brit, Alex
+ */
 public class Domino {
     private int end1;
     private int end2;

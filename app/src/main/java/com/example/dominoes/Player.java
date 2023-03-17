@@ -1,8 +1,10 @@
-package GameFramework;
+package com.example.dominoes;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+@author Jackson , Brit, Alex
+ */
 public class Player {
     private String name;
     private List<Domino> hand;
