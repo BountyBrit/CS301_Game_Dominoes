@@ -7,6 +7,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/** DominoGameState
+ * This class is the GameState of the Domino Game
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
+ */
 public class DominoGameState {
 
     // instance variables for the game state
@@ -254,18 +262,18 @@ public class DominoGameState {
     }//toString()
 
     public DominoGameState(DominoGameState other, int playerIndex) {
-        // copy the board
+        //copy the board
         board = new ArrayList<>(other.board.size());
         for (Integer d : other.board) {
             board.add(new Integer(d));
         }
 
-        // copy the boneyard
+        //copy the boneyard
         boneyard = new ArrayList<>(other.boneyard.size());
         for (Integer d : other.boneyard) {
             boneyard.add(new Integer(d));
         }
-        //cope the player's hands
+        //copy the player's hands
         //ADD MORE CODE//
 
         //copy the scores

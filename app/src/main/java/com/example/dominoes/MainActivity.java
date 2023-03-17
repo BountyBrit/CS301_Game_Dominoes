@@ -6,6 +6,13 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+/** MainActivity
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
