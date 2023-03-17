@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Jackson Smith
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

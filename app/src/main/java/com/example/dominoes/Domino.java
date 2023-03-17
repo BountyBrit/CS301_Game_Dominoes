@@ -1,4 +1,4 @@
-package GameFramework;
+package com.example.dominoes;
 
 /** Domino
  * This class has all of the relevant information for a domino
