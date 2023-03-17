@@ -1,5 +1,7 @@
 package com.example.dominoes;
 
+import android.app.GameState;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,10 +29,10 @@ public class DominoGameState {
 
     public void DominoeGameState() {
         //Initialises the game state
-        player1Hand = new ArrayList<>();
-        player2Hand = new ArrayList<>();
-        player3Hand = new ArrayList<>();
-        player4Hand = new ArrayList<>();
+        player1Hand = new ArrayList<Integer>();
+        player2Hand = new ArrayList<Integer>();
+        player3Hand = new ArrayList<Integer>();
+        player4Hand = new ArrayList<Integer>();
         board = new ArrayList<Integer>();
         currentPlayer = 1;
         player1Score = 0;
@@ -39,24 +41,23 @@ public class DominoGameState {
         player4Score = 0;
 
         // Initializes hands and board to starting set
-        for(int i = 0; i <= 6; i++){
-            for(int j = i; j <= 6; j++){
+        for (int i = 0; i <= 6; i++) {
+            for (int j = i; j <= 6; j++) {
                 //Adds all possible domino pieces to the draw pile
-                board.add(i*10+j);
+                board.add(i * 10 + j);
             }
         }
         //Shuffle the draw pile
         Collections.shuffle(board);
 
         //Deal seven dominoes to each player
-        for(int i = 0; i < 7; i++){
+        for (int i = 0; i < 7; i++) {
             player1Hand.add(board.remove(0));
             player2Hand.add(board.remove(0));
             player3Hand.add(board.remove(0));
             player4Hand.add(board.remove(0));
         }
     }
-
 
     //
     //
