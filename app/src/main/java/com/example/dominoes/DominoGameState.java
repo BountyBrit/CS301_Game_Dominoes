@@ -15,7 +15,6 @@ public class DominoGameState {
     private ArrayList<Integer> player2Hand;
     private ArrayList<Integer> player3Hand;
     private ArrayList<Integer> player4Hand;
-
     private ArrayList<Integer> board;
     private int currentPlayer;
     private int player1Score;
@@ -59,7 +58,6 @@ public class DominoGameState {
         }
     }
 
-    //
     //
     //These are the getters and setters for the game, which includes the
     //score, current player/turn, and each players hand.
