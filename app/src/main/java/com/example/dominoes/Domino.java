@@ -38,4 +38,5 @@ public class Domino {
     public String toString() {
         return "[" + end1 + "|" + end2 + "]";
     }
+
 }

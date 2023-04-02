@@ -23,7 +23,6 @@ public class DominoGameState {
     private ArrayList<Integer> player2Hand;
     private ArrayList<Integer> player3Hand;
     private ArrayList<Integer> player4Hand;
-
     private ArrayList<Integer> board;
     private int currentPlayer;
     private int player1Score;
@@ -49,8 +48,8 @@ public class DominoGameState {
         player4Score = 0;
 
         // Initializes hands and board to starting set
-        for (int i = 0; i <= 7; i++) {
-            for (int j = i; j <= 7; j++) {
+        for (int i = 0; i <= 6; i++) {
+            for (int j = i; j <= 6; j++) {
                 //Adds all possible domino pieces to the draw pile
                 board.add(i * 10 + j);
             }
@@ -67,7 +66,6 @@ public class DominoGameState {
         }
     }
 
-    //
     //
     //These are the getters and setters for the game, which includes the
     //score, current player/turn, and each players hand.
@@ -134,10 +132,7 @@ public class DominoGameState {
     }
 
     //Calls the current/players turn
-    public int getCurrentPlayer() {
-
-        return currentPlayer;
-    }
+    public int getCurrentPlayer() { return currentPlayer; }
 
     //Gets player 1 score
     public int getPlayer1Score() {
