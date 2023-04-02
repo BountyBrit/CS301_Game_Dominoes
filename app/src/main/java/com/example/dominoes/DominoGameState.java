@@ -35,7 +35,7 @@ public class DominoGameState {
     private ArrayList<Integer> boneyard;
 
 
-    public void DominoeGameState() {
+    public DominoGameState() {
         //Initialises the game state
         player1Hand = new ArrayList<Integer>();
         player2Hand = new ArrayList<Integer>();
@@ -281,5 +281,15 @@ public class DominoGameState {
 
         //current player
         currentPlayer = other.currentPlayer;
+    }
+
+    public boolean placeDomino(Domino domino, Player player) {
+        //cannot place because the arraylists are neither initialized nor Domino objects
+        return false;
+    }
+
+    public boolean drawDomino(Player player){
+        //cannot place because the arraylists are neither initialized nor Domino objects
+        return false;
     }
 }
