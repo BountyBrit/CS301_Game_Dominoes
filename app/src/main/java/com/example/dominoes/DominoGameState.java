@@ -124,10 +124,7 @@ public class DominoGameState {
     }
 
     //Calls the current/players turn
-    public int getCurrentPlayer() {
-
-        return currentPlayer;
-    }
+    public int getCurrentPlayer() { return currentPlayer; }
 
     //Gets player 1 score
     public int getPlayer1Score() {
