@@ -30,5 +30,4 @@ public class Domino {
         return "[" + end1 + "|" + end2 + "]";
     }
 
-
 }
