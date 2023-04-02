@@ -1,8 +1,16 @@
-package GameFramework;
+package com.example.dominoes;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/** Player
+ * This class has all of the relevant information for a player
+ *
+ * @author britdannen
+ * @author Alejandro Varela
+ * @author Jackson Smith
+ *
+ */
 public class Player {
     private String name;
     private List<Domino> hand;
