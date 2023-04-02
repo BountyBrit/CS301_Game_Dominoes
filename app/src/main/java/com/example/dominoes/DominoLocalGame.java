@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 public class DominoLocalGame {
+public class DominoLocalGame {
     private int lastWinner;
     private int currentWinner;
     private DominoGameState dgs;
