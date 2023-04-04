@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.dominoes.GameFramework.players.Domino;
 
 import android.os.Bundle;
 import android.view.View;
@@ -25,10 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         DominoGameState firstInstance = new DominoGameState();
-        DominoGameState secondInstance = new DominoGameState(firstInstance, 0);
+        DominoGameState secondInstance = new DominoGameState(firstInstance);
 
         Domino tile = new Domino(1,2);
-        Player player = new Player("Name");
+        Player player = new Player();
         firstInstance.placeDomino(tile, player);
         firstInstance.drawDomino(player);
 

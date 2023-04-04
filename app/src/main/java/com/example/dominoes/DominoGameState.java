@@ -5,7 +5,10 @@ import android.app.GameState;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
+import com.example.dominoes.GameFramework.players.Domino;
+import com.example.dominoes.Player;
 
 /** DominoGameState
  * This class is the GameState of the Domino Game
@@ -19,33 +22,39 @@ public class DominoGameState {
 
     // instance variables for the game state
     private int[] scores;
-    private ArrayList<Integer> player1Hand;
-    private ArrayList<Integer> player2Hand;
-    private ArrayList<Integer> player3Hand;
-    private ArrayList<Integer> player4Hand;
+    private Hashtable<Integer, ArrayList<Domino>> hands;
     private ArrayList<Integer> board;
+
+    private ArrayList<Domino> tiles;
+
+    private RealPlayer Human;
+    private AIPlayer Computer1;
+    private AIPlayer Computer2;
+    private AIPlayer Computer3;
+
     private int currentPlayer;
-    private int player1Score;
-    private int player2Score;
 
-    private int player3Score;
-    private int player4Score;
-
-    private ArrayList<Integer> boneyard;
 
 
     public DominoGameState() {
         //Initialises the game state
-        player1Hand = new ArrayList<Integer>();
-        player2Hand = new ArrayList<Integer>();
-        player3Hand = new ArrayList<Integer>();
-        player4Hand = new ArrayList<Integer>();
-        board = new ArrayList<Integer>();
+
+        board = new ArrayList<>();
         currentPlayer = 1;
-        player1Score = 0;
-        player2Score = 0;
-        player3Score = 0;
-        player4Score = 0;
+        scores = new int[4];
+        for(int i = 0; i < 4; i++) {
+            scores[i] = 0;
+        }
+
+        tiles = new ArrayList<>();
+
+        //Create all of the pieces
+        for(int i = 6; i > -1; i--) {
+            for(int j = i; j > -1; j--) {
+                Domino interm = new Domino(i,j);
+                tiles.add(interm);
+            }
+        }
 
         // Initializes hands and board to starting set
         for (int i = 0; i <= 6; i++) {
@@ -57,13 +66,41 @@ public class DominoGameState {
         //Shuffle the draw pile
         Collections.shuffle(board);
 
-        //Deal seven dominoes to each player
+        //Deal seven dominoes to each player within the Hashtable
+        ArrayList<Domino> player1Hand = new ArrayList<>();
+        ArrayList<Domino> player2Hand = new ArrayList<>();
+        ArrayList<Domino> player3Hand = new ArrayList<>();
+        ArrayList<Domino> player4Hand = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            player1Hand.add(board.remove(0));
-            player2Hand.add(board.remove(0));
-            player3Hand.add(board.remove(0));
-            player4Hand.add(board.remove(0));
+            player1Hand.add(tiles.remove(0));
+            player2Hand.add(tiles.remove(0));
+            player3Hand.add(tiles.remove(0));
+            player4Hand.add(tiles.remove(0));
         }
+        hands.put(0, player1Hand);
+        hands.put(1, player2Hand);
+        hands.put(2, player3Hand);
+        hands.put(3, player4Hand);
+    }
+
+    public DominoGameState(DominoGameState other) {
+        //copy the board
+        board = other.getBoard();
+        //copy the hands over
+        this.hands = other.hands;
+        //copy the scores over
+        for(int i = 0; i < 4; i++) {
+            this.scores[i] = other.scores[i];
+        }
+
+        //current player
+        currentPlayer = other.currentPlayer;
+    }
+
+    public ArrayList<Domino> createHand() {
+        ArrayList<Domino> currHand = new ArrayList<>();
+
+        return currHand;
     }
 
     //
@@ -72,51 +109,48 @@ public class DominoGameState {
     //
 
     //Gets player 1 domino hand
-    public ArrayList<Integer> getPLayer1Hand() {
-
-        return player2Hand;
-    }
-
-    //Sets player 1 domino hand
-    public void setPlayer1Hand(ArrayList<Integer> player1Hand) {
-
-        this.player1Hand = player1Hand;
-    }
-
-    //Gets player 2 domino hand
-    public ArrayList<Integer> getPlayer2Hand() {
-
-        return player2Hand;
+    public ArrayList<Domino> getPLayer1Hand() {
+        return hands.get(0);
     }
 
     //Sets player 2 domino hand
-    public void setPlayer2Hand(ArrayList<Integer> player2Hand) {
-
-        this.player2Hand = player2Hand;
+    public ArrayList<Domino> getPLayer2Hand() {
+        return hands.get(1);
     }
 
-    //Get player 3 domino hand
-    public ArrayList<Integer> getPlayer3Hand() {
-
-        return player3Hand;
+    //Gets player 3 domino hand
+    public ArrayList<Domino> getPLayer3Hand() {
+        return hands.get(2);
     }
 
-    //Sets player 3 domino hands
-    public void setPlayer3Hand(ArrayList<Integer> player3Hand) {
-
-        this.player3Hand = player3Hand;
+    //Sets player 4 domino hand
+    public ArrayList<Domino> getPLayer4Hand() {
+        return hands.get(3);
     }
 
-    //PLayer 4 domino hand
-    public ArrayList<Integer> getPlayer4Hand() {
 
-        return player4Hand;
+    //Sets player 1 domino hands
+    public void setPlayer1Hand(ArrayList<Domino> playerHand) {
+        hands.remove(0);
+        hands.put(0, playerHand);
     }
 
-    //Player 4 domino hand when its turn
-    public void setPlayer4Hand(ArrayList<Integer> player4Hand) {
+    //Sets player 2 domino hand
+    public void setPlayer2Hand(ArrayList<Domino> playerHand) {
+        hands.remove(1);
+        hands.put(1, playerHand);
+    }
 
-        this.player4Hand = player4Hand;
+    //Sets player 3 domino hand
+    public void setPlayer3Hand(ArrayList<Domino> playerHand) {
+        hands.remove(2);
+        hands.put(2, playerHand);
+    }
+
+    //Sets player 4 domino hand
+    public void setPlayer4Hand(ArrayList<Domino> playerHand) {
+        hands.remove(3);
+        hands.put(3, playerHand);
     }
 
     //Gets the board
@@ -136,147 +170,45 @@ public class DominoGameState {
 
     //Gets player 1 score
     public int getPlayer1Score() {
-        return player1Score;
+        return scores[0];
     }
 
     //Sets player 1 score
-    public void setPlayer1Score(int player1Score) {
-        this.player1Score = player1Score;
+    public void setPlayer1Score(int playerScore) {
+        scores[0] = playerScore;
     }
 
     //Gets player 2 score
     public int getPlayer2Score() {
-        return player2Score;
+        return scores[1];
     }
 
     //Sets the player 2 score
-    public void setPlayer2Score(int player2Score) {
-        this.player2Score = player2Score;
+    public void setPlayer2Score(int playerScore) {
+        scores[1] = playerScore;
     }
 
     //Gets player 3 score
     public int getPlayer3Score() {
-        return player3Score;
+        return scores[2];
     }
 
-    //Sets the player 3 scores
-    public void setPlayer3Score(int player3Score) {
-        this.player3Score = player3Score;
+    //Sets the player 3 score
+    public void setPlayer3Score(int playerScore) {
+        scores[2] = playerScore;
     }
 
     //Gets player 4 score
     public int getPlayer4Score() {
-        return player4Score;
+        return scores[3];
     }
 
-    //Sets player 4 score
-    public void setPlayer4Score(int player4Score) {
-        this.player4Score = player4Score;
+    //Sets the player 4 score
+    public void setPlayer4Score(int playerScore) {
+        scores[2] = playerScore;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Board: ");
-        if (board.isEmpty()) {
-            sb.append("Empty");
-        } else {
-            for (Integer d : board) {
-                sb.append(d.toString() + " ");
-            }
-        }
-        sb.append("\n");
 
-        sb.append("Boneyard: ");
-        if (boneyard.isEmpty()) {
-            sb.append("Empty");
-        } else {
-            for (Integer d : boneyard) {
-                sb.append(d.toString() + " ");
-            }
-        }
-        sb.append("\n");
-
-        for (int i = 0; i < player1Hand.size(); i++) {
-            sb.append("Hand for Player " + (i+1) + ": ");
-            if ((player1Hand.get(i)) == null) {
-                sb.append("Empty");
-            } else {
-                for (Integer d : player1Hand) {
-                    sb.append(d.toString() + " ");
-                }
-            }
-            sb.append("\n");
-        }//player1
-
-        for (int i = 0; i < player2Hand.size(); i++) {
-            sb.append("Hand for Player " + (i+1) + ": ");
-            if ((player2Hand.get(i)) == null) {
-                sb.append("Empty");
-            } else {
-                for (Integer d : player2Hand) {
-                    sb.append(d.toString() + " ");
-                }
-            }
-            sb.append("\n");
-        }//player3
-
-        for (int i = 0; i < player3Hand.size(); i++) {
-            sb.append("Hand for Player " + (i+1) + ": ");
-            if ((player3Hand.get(i)) == null) {
-                sb.append("Empty");
-            } else {
-                for (Integer d : player3Hand) {
-                    sb.append(d.toString() + " ");
-                }
-            }
-            sb.append("\n");
-        }//player3
-
-        for (int i = 0; i < player4Hand.size(); i++) {
-            sb.append("Hand for Player " + (i+1) + ": ");
-            if ((player4Hand.get(i)) == null) {
-                sb.append("Empty");
-            } else {
-                for (Integer d : player4Hand) {
-                    sb.append(d.toString() + " ");
-                }
-            }
-            sb.append("\n");
-        }//player4
-
-        sb.append("Scores: ");
-        sb.append(Arrays.toString(scores));
-        sb.append("\n");
-
-        sb.append("Current player: ");
-        sb.append(currentPlayer + 1);
-        sb.append("\n");
-
-        return sb.toString();
-    }//toString()
-
-    public DominoGameState(DominoGameState other, int playerIndex) {
-        //copy the board
-        board = new ArrayList<>(other.board.size());
-        for (Integer d : other.board) {
-            board.add(new Integer(d));
-        }
-
-        //copy the boneyard
-        boneyard = new ArrayList<>(other.boneyard.size());
-        for (Integer d : other.boneyard) {
-            boneyard.add(new Integer(d));
-        }
-        //copy the player's hands
-        //ADD MORE CODE//
-
-        //copy the scores
-        scores = new int[]{other.scores[0], other.scores[1]};
-
-        //current player
-        currentPlayer = other.currentPlayer;
-    }
 
     public boolean placeDomino(Domino domino, Player player) {
         //cannot place because the arraylists are neither initialized nor Domino objects
@@ -287,4 +219,5 @@ public class DominoGameState {
         //cannot place because the arraylists are neither initialized nor Domino objects
         return false;
     }
+
 }

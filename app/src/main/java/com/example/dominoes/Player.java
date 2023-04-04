@@ -2,6 +2,7 @@ package com.example.dominoes;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.dominoes.GameFramework.players.Domino;
 
 /** Player
  * This class has all of the relevant information for a player
@@ -12,21 +13,16 @@ import java.util.List;
  *
  */
 public class Player {
-    private String name;
-    private List<Domino> hand;
+    private ArrayList<Domino> hand;
     private int score;
 
-    public Player(String name) {
-        this.name = name;
-        this.hand = new ArrayList<Domino>();
+    public Player() {
+        this.hand = new ArrayList<>();
         this.score = 0;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public List<Domino> getHand() {
+    public ArrayList<Domino> getHand() {
         return hand;
     }
 
@@ -50,9 +46,6 @@ public class Player {
         return hand.contains(domino);
     }
 
-    public boolean hasDominoes() {
-        return !hand.isEmpty();
-    }
 
     public int getHandSize() {
         return hand.size();
