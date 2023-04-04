@@ -16,6 +16,10 @@ import java.util.ArrayList;
  *
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Domino[][] DominoBoard;
+    private int currentPlayer;
+    ArrayList<Domino> currentPLayerHand;
+    private boolean isGameOver = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ArrayList<Integer> board;
         board = firstInstance.getBoard();
-        //for when board and boneyard are made up of tiles
         //board.add(tile);
     }
+
+    public void addPlayer() {
+
+    }
+    public void removePlayer() {
+
+    }
+
 }
