@@ -1,7 +1,7 @@
 package com.example.dominoes;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import com.example.dominoes.GameFramework.players.Domino;
 
 /** Player
@@ -12,11 +12,11 @@ import com.example.dominoes.GameFramework.players.Domino;
  * @author Jackson Smith
  *
  */
-public class Player {
+public class Player extends DominoGameState{
     private ArrayList<Domino> hand;
     private int score;
 
-    public Player() {
+    public Player(String name) {
         this.hand = new ArrayList<>();
         this.score = 0;
     }
@@ -42,8 +42,9 @@ public class Player {
         hand.remove(domino);
     }
 
-    public boolean hasDomino(Domino domino) {
-        return hand.contains(domino);
+    public boolean hasDomino() {
+        Domino domino = null;
+        return hand.contains(null);
     }
 
 
@@ -51,4 +52,5 @@ public class Player {
         return hand.size();
     }
 }
+
 

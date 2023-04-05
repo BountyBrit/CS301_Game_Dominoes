@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DominoGameState secondInstance = new DominoGameState(firstInstance);
 
         Domino tile = new Domino(1,2);
-        Player player = new Player();
+        String name = null;
+        Player player = new Player(null);
         firstInstance.placeDomino(tile, player);
         firstInstance.drawDomino(player);
 
