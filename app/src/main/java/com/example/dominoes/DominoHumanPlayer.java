@@ -1,6 +1,9 @@
 package com.example.dominoes;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.game.GameHumanPlayer;
 import com.example.game.GameMainActivity;
@@ -19,6 +22,17 @@ import java.util.ArrayList;
  *
  */
 public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+
+    /* instance variables */
+
+    // These variables will reference widgets that will be modified during play
+    private TextView    playerScoreTextView = null;
+    private TextView    oppScoreTextView    = null;
+    private TextView    messageTextView     = null;
+    private Button      drawButton          = null;
+    private Button      passButton          = null;
+    private GameMainActivity myActivity;
+
     private ArrayList<Domino> hand;
     private int score;
 
@@ -63,7 +77,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         return hand.contains(null);
     }
 
-
     public int getHandSize() {
         return hand.size();
     }
@@ -85,9 +98,29 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 //            }
 //        }
     }
+    public View getTopView() {
+        return myActivity.findViewById(R.id.top_gui_layout);
+    }
 
     @Override
     public void setAsGui(GameMainActivity activity) {
+
+        // remember the activity
+        myActivity = activity;
+
+        // Load the layout resource for our GUI
+        activity.setContentView(R.layout.domino_layout);
+
+        //Initialize the widget reference member variables
+        //this.playerScoreTextView = (TextView)activity.findViewById(R.id.yourScoreValue);
+        //this.oppScoreTextView    = (TextView)activity.findViewById(R.id.oppScoreValue);
+        //this.messageTextView     = (TextView)activity.findViewById(R.id.messageTextView);
+        this.drawButton          = (Button)activity.findViewById(R.id.draw_button);
+        this.passButton          = (Button)activity.findViewById(R.id.pass_button);
+
+        //Listen for button presses
+        drawButton.setOnClickListener(this);
+        passButton.setOnClickListener(this);
 
     }
 }

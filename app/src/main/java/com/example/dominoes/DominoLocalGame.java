@@ -21,17 +21,13 @@ public class DominoLocalGame extends LocalGame {
     }
 
 
-    public void addScore(){
-
-    }
+    public void addScore(){}
 
     public boolean isValid(){
         return false;
     }
 
-    public void alternatePlayer(){
-
-    }
+    public void alternatePlayer(){}
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {

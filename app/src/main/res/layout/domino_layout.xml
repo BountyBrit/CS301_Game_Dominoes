@@ -22,6 +22,14 @@
             android:textSize="24sp"
             android:layout_marginEnd="16dp"/>
 
+        <TextView
+            android:id="@+id/middle_score_label"
+            android:text="Middle Player: 0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="24sp"/>
+
         <!-- The right player's score -->
         <TextView
             android:id="@+id/right_score_label"

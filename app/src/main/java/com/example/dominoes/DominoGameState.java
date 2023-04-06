@@ -21,7 +21,7 @@ public class DominoGameState extends GameState {
 
     // instance variables for the game state
     private int[] scores;
-    private Hashtable<Integer, ArrayList<Domino>> hands;
+    private Hashtable<Integer, ArrayList<Domino>> hands =  new Hashtable<>();
     private ArrayList<Integer> board;
 
     private ArrayList<Domino> tiles;
@@ -36,7 +36,6 @@ public class DominoGameState extends GameState {
 
     public DominoGameState() {
         //Initialises the game state
-
         board = new ArrayList<>();
         currentPlayer = 1;
         scores = new int[4];
@@ -54,27 +53,29 @@ public class DominoGameState extends GameState {
             }
         }
 
-        // Initializes hands and board to starting set
-        for (int i = 0; i <= 6; i++) {
-            for (int j = i; j <= 6; j++) {
-                //Adds all possible domino pieces to the draw pile
-                board.add(i * 10 + j);
-            }
-        }
-        //Shuffle the draw pile
-        Collections.shuffle(board);
+//        // Initializes hands and board to starting set
+//        for (int i = 0; i <= 6; i++) {
+//            for (int j = i; j <= 6; j++) {
+//                //Adds all possible domino pieces to the draw pile
+//                board.add(i * 10 + j);
+//            }
+//        }
+//        //Shuffle the draw pile
+//        Collections.shuffle(board);
 
         //Deal seven dominoes to each player within the Hashtable
         ArrayList<Domino> player1Hand = new ArrayList<>();
         ArrayList<Domino> player2Hand = new ArrayList<>();
         ArrayList<Domino> player3Hand = new ArrayList<>();
         ArrayList<Domino> player4Hand = new ArrayList<>();
+
         for (int i = 0; i < 7; i++) {
             player1Hand.add(tiles.remove(0));
             player2Hand.add(tiles.remove(0));
             player3Hand.add(tiles.remove(0));
             player4Hand.add(tiles.remove(0));
         }
+        //
         hands.put(0, player1Hand);
         hands.put(1, player2Hand);
         hands.put(2, player3Hand);
@@ -97,7 +98,6 @@ public class DominoGameState extends GameState {
 
     public ArrayList<Domino> createHand() {
         ArrayList<Domino> currHand = new ArrayList<>();
-
         return currHand;
     }
 
@@ -157,7 +157,7 @@ public class DominoGameState extends GameState {
         return board;
     }
 
-    //Initialises the board
+    //Initializes the board
     public void setBoard(ArrayList<Integer> board) {
 
         this.board = board;
