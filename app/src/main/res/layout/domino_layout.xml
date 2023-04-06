@@ -319,43 +319,37 @@
                 android:id="@+id/button34"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_weight="1" />
         </LinearLayout>
 
 </LinearLayout>

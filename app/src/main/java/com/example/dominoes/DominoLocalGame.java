@@ -29,7 +29,9 @@ public class DominoLocalGame extends LocalGame {
         return false;
     }
 
-    public void alternatePlayer(){}
+    public void alternatePlayer(){
+        dgs.rotatePlayer();
+    }
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -57,6 +59,7 @@ public class DominoLocalGame extends LocalGame {
     }
 
     public boolean placeDomino(Domino domino, DominoHumanPlayer player, View view) {
+
         if(player.hasDomino()){return false;}
         else {
             player.onClick(view);
@@ -65,6 +68,7 @@ public class DominoLocalGame extends LocalGame {
     }
 
     public boolean passTurn(DominoHumanPlayer player){
-        return false;
+        alternatePlayer();
+        return true;
     }
 }

@@ -153,18 +153,25 @@ public class DominoGameState extends GameState {
 
     //Gets the board
     public ArrayList<Integer> getBoard() {
-
         return board;
     }
 
     //Initializes the board
     public void setBoard(ArrayList<Integer> board) {
-
         this.board = board;
     }
 
     //Calls the current/players turn
     public int getCurrentPlayer() { return currentPlayer; }
+
+    public boolean rotatePlayer() {
+        if(currentPlayer == 4) {
+            currentPlayer = 1;
+            return true;
+        }
+        currentPlayer += 1;
+        return true;
+    }
 
     //Gets player 1 score
     public int getPlayer1Score() {
