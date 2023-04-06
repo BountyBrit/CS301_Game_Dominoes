@@ -34,23 +34,19 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private GameMainActivity myActivity;
 
     private ArrayList<Domino> hand;
+    private ArrayList<Button> handButtons;
     private int score;
 
     public DominoHumanPlayer(String name) {
+        super(name);
         this.hand = new ArrayList<>();
         this.score = 0;
-    }
-
-    @Override
-    public View getTopView() {
-        return null;
     }
 
     @Override
     public void receiveInfo(GameInfo info) {
 
     }
-
 
     public ArrayList<Domino> getHand() {
         return hand;
@@ -82,7 +78,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View button) {
 //        while (hasDomino()) {
 //            switch (button.getId()) {
 //                case R.id.dominos:
@@ -97,11 +93,19 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 //                    break;
 //            }
 //        }
+        //the buttons that correspond with the hands in an array
+        handButtons = new ArrayList<>();
+        handButtons.add(button.findViewById(R.id.handButton1));
+        handButtons.add(button.findViewById(R.id.handButton2));
+        handButtons.add(button.findViewById(R.id.handButton3));
+        handButtons.add(button.findViewById(R.id.handButton4));
+        handButtons.add(button.findViewById(R.id.handButton5));
+        handButtons.add(button.findViewById(R.id.handButton6));
+        handButtons.add(button.findViewById(R.id.handButton7));
     }
-//    public View getTopView() {
-//        return myActivity.findViewById(R.id.top_gui_layout);
-//    }
-    //dummy comment
+
+    public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
+
     @Override
     public void setAsGui(GameMainActivity activity) {
 
@@ -122,6 +126,14 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         drawButton.setOnClickListener(this);
         passButton.setOnClickListener(this);
 
+    }
+
+    //for(int i = 0; i < 7; i++) {
+      //  Button intrm = ((this.getHandButtons()).get(i));
+      //  intrm.setText(hands.get(currentPlayer).get(i).getEnd1() + ", " + hands.get(currentPlayer).get(i).getEnd2());
+    //}
+    public ArrayList<Button> getHandButtons() {
+        return handButtons;
     }
 }
 

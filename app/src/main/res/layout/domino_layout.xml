@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/top_gui_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <!-- The players' scores section of the screen -->
     <LinearLayout
         android:id="@+id/scores_section"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <!-- The left player's score -->
         <TextView
             android:id="@+id/left_score_label"
-            android:text="Left Player: 0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:layout_marginEnd="16dp"/>
-
-        <TextView
-            android:id="@+id/middle_score_label"
-            android:text="Middle Player: 0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:textSize="24sp"/>
+            android:text="Left Player: 0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/middle_score_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Middle Player: 0"
+            android:textSize="24sp" />
 
         <!-- The right player's score -->
         <TextView
             android:id="@+id/right_score_label"
-            android:text="Right Player: 0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"/>
+            android:text="Right Player: 0"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -47,7 +48,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/button0_0"
@@ -94,7 +95,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/button0_1"
@@ -141,7 +142,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/button0_2"
@@ -188,7 +189,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/button0_3"
@@ -236,11 +237,11 @@
 
     <LinearLayout
         android:id="@+id/board_section"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <!-- The board label -->
 
@@ -249,65 +250,65 @@
             android:id="@+id/board_view"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/purple_200"/>
+            android:background="@color/purple_200" />
 
     </LinearLayout>
 
     <!-- The player's hand section of the screen -->
     <LinearLayout
         android:id="@+id/hand_section"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
 
         <!-- The player's hand label -->
         <TextView
             android:id="@+id/hand_label"
-            android:text="Your Hand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="24sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:text="Your Hand"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- The player's hand -->
         <LinearLayout
             android:id="@+id/hand"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal" />
 
         <!-- The player's action buttons -->
         <LinearLayout
             android:id="@+id/action_buttons"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="16dp">
+            android:orientation="horizontal">
 
             <!-- The draw button -->
 
             <Button
                 android:id="@+id/draw_button"
-                android:text="Draw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:padding="8dp"/>
+                android:padding="8dp"
+                android:text="Draw"
+                android:textSize="18sp" />
 
-        <!-- The pass button -->
-        <Button
-            android:id="@+id/pass_button"
-            android:text="Pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:padding="8dp"
-            android:layout_marginStart="16dp"/>
+            <!-- The pass button -->
+            <Button
+                android:id="@+id/pass_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="8dp"
+                android:text="Pass"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/handButton7"
@@ -352,47 +353,47 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
 
     <!-- The game over section of the screen -->
-<LinearLayout
-    android:id="@+id/game_over_section"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:visibility="gone">
+    <LinearLayout
+        android:id="@+id/game_over_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-<!-- The game over label -->
-<TextView
-    android:id="@+id/game_over_label"
-    android:text="Game Over"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:textSize="32sp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="32dp"/>
+        <!-- The game over label -->
+        <TextView
+            android:id="@+id/game_over_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:text="Game Over"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-<!-- The winner label -->
-<TextView
-    android:id="@+id/winner_label"
-    android:text="Winner: "
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:textSize="24sp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="16dp"/>
+        <!-- The winner label -->
+        <TextView
+            android:id="@+id/winner_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="Winner: "
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-<!-- The new game button -->
-<Button
-    android:id="@+id/new_game_button"
-    android:text="New Game"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="18sp"
-    android:padding="8dp"/>
+        <!-- The new game button -->
+        <Button
+            android:id="@+id/new_game_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="New Game"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.game.GameMainActivity;
@@ -58,21 +59,6 @@ public class DominoMainActivity extends GameMainActivity {
 
     @Override
     public LocalGame createLocalGame() {return new DominoLocalGame();}
-
-//    public void onClick(View view) {
-//        DominoGameState firstInstance = new DominoGameState();
-//        DominoGameState secondInstance = new DominoGameState(firstInstance);
-//
-//        Domino tile = new Domino(1,2);
-//        String name = null;
-//        DominoHumanPlayer player = new DominoHumanPlayer(null);
-//        firstInstance.placeDomino(tile, player);
-//        firstInstance.drawDomino(player);
-//
-//        ArrayList<Integer> board;
-//        board = firstInstance.getBoard();
-//        //board.add(tile);
-//    }
 
     public void addPlayer() {
         // null for now

@@ -9,20 +9,20 @@ public class DominoComputerPlayer extends GameComputerPlayer {
 
     @Override
     protected void receiveInfo(GameInfo info) {
-        DominoGameState pgs = new DominoGameState((DominoGameState)info);
-        if (pgs.getCurrentPlayer() != playerNum) {
-            return;
-        } //return
-        Random rnd = new Random();
-        if (rnd.nextBoolean()) {
-            sleep(2000);
-            DominoPassAction dpsa = new DominoPassAction(this);
-            this.game.sendAction(dpsa);
-        } else {
-            sleep(2000);
-            DominoPlaceAction dpa = new DominoPlaceAction(this);
-            this.game.sendAction(dpa);
-        }
+//        DominoGameState dgs = new DominoGameState((DominoGameState)info);
+//        if (dgs.getCurrentPlayer() != playerNum) {
+//            return;
+//        } //return
+//        Random rnd = new Random();
+//        if (rnd.nextBoolean()) {
+//            sleep(2000);
+//            DominoPassAction dpsa = new DominoPassAction(this);
+//            this.game.sendAction(dpsa);
+//        } else {
+//            sleep(2000);
+//            DominoPlaceAction dpa = new DominoPlaceAction(this);
+//            this.game.sendAction(dpa);
+//        }
 
     }
 }

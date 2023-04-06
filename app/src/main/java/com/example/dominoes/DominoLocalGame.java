@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.example.game.GamePlayer;
 import com.example.game.LocalGame;
@@ -10,6 +11,7 @@ public class DominoLocalGame extends LocalGame {
     private int lastWinner;
     private int currentWinner;
     private DominoGameState dgs;
+
 
     /**
      * This ctor creates a new game state
@@ -22,15 +24,15 @@ public class DominoLocalGame extends LocalGame {
         return false;
     }
 
+    public void addScore() {
+    }
 
-    public void addScore(){}
-
-    public boolean isValid(){
+    public boolean isValid() {
         return false;
     }
 
-    public void alternatePlayer(){
-        dgs.rotatePlayer();
+    public void alternatePlayer() {
+        //dgs.rotatePlayer();
     }
 
     @Override
@@ -41,11 +43,12 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean canMove(int playerIdx) {
-        if (playerIdx == dgs.getCurrentPlayer()) {
-            return true;
-        } else {
-            return false;
-        }
+//        if (playerIdx == dgs.getCurrentPlayer()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return true;
     }
 
     @Override
@@ -55,20 +58,30 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean makeMove(GameAction action) {
-        return false;
+//        if (action instanceof DominoPlaceAction) {
+//            return true;
+//        } else if (action instanceof DominoPassAction) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return true;
     }
 
     public boolean placeDomino(Domino domino, DominoHumanPlayer player, View view) {
 
-        if(player.hasDomino()){return false;}
-        else {
+        if (player.hasDomino()) {
+            return false;
+        } else {
             player.onClick(view);
         }
         return false;
     }
 
-    public boolean passTurn(DominoHumanPlayer player){
+    public boolean passTurn(DominoHumanPlayer player) {
         alternatePlayer();
         return true;
     }
+
+
 }

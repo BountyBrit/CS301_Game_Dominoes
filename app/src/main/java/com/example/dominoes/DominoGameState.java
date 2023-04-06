@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 
+import com.example.game.GameMainActivity;
 import com.example.game.GamePlayer;
 import com.example.game.LocalGame;
 import com.example.game.actionMsg.GameAction;
+import com.example.game.config.GameConfig;
 import com.example.game.infoMsg.GameState;
 
 /** DominoGameState
@@ -83,7 +85,6 @@ public class DominoGameState extends GameState {
         hands.put(2, player3Hand);
         hands.put(3, player4Hand);
 
-
     }
 
     public DominoGameState(DominoGameState other) {
@@ -92,6 +93,7 @@ public class DominoGameState extends GameState {
         //copy the hands over
         this.hands = other.hands;
         //copy the scores over
+        this.scores = new int[4];
         for(int i = 0; i < 4; i++) {
             this.scores[i] = other.scores[i];
         }
@@ -104,6 +106,7 @@ public class DominoGameState extends GameState {
         ArrayList<Domino> currHand = new ArrayList<>();
         return currHand;
     }
+
 
     //
     //These are the getters and setters for the game, which includes the
