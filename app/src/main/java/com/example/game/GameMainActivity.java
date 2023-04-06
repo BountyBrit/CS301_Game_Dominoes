@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -482,6 +483,7 @@ View.OnClickListener {
 		
 		// if the GUI many not have been fully initialized, ignore
 		if (justStarted) {
+
 			return;
 		}
 		
@@ -520,6 +522,15 @@ View.OnClickListener {
 
 		//Start Game Button
 		else if (button.getId() == R.id.playGameButton) {
+			//the buttons that correspond with the hands in an array
+			ArrayList<Button> handButtons = new ArrayList<>();
+			handButtons.add(button.findViewById(R.id.handButton1));
+			handButtons.add(button.findViewById(R.id.handButton2));
+			handButtons.add(button.findViewById(R.id.handButton3));
+			handButtons.add(button.findViewById(R.id.handButton4));
+			handButtons.add(button.findViewById(R.id.handButton5));
+			handButtons.add(button.findViewById(R.id.handButton6));
+			handButtons.add(button.findViewById(R.id.handButton7));
 			String msg = startGame();
 			if (msg != null) {
 				// we have an error message

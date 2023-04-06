@@ -1,5 +1,8 @@
 package com.example.dominoes;
 
+import android.view.View;
+import android.widget.Button;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
@@ -31,7 +34,6 @@ public class DominoGameState extends GameState {
     private DominoComputerPlayer Computer3;
 
     private int currentPlayer;
-
 
 
     public DominoGameState() {
@@ -80,6 +82,8 @@ public class DominoGameState extends GameState {
         hands.put(1, player2Hand);
         hands.put(2, player3Hand);
         hands.put(3, player4Hand);
+
+
     }
 
     public DominoGameState(DominoGameState other) {
