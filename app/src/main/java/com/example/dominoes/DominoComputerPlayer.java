@@ -2,7 +2,6 @@ package com.example.dominoes;
 
 import com.example.game.GameComputerPlayer;
 import com.example.game.infoMsg.GameInfo;
-
 import java.util.Random;
 
 public class DominoComputerPlayer extends GameComputerPlayer {
