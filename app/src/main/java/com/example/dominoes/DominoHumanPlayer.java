@@ -98,9 +98,9 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 //            }
 //        }
     }
-    public View getTopView() {
-        return myActivity.findViewById(R.id.top_gui_layout);
-    }
+//    public View getTopView() {
+//        return myActivity.findViewById(R.id.top_gui_layout);
+//    }
     //dummy comment
     @Override
     public void setAsGui(GameMainActivity activity) {

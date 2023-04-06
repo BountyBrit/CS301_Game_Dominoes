@@ -206,15 +206,4 @@ public class DominoGameState extends GameState {
         scores[3] = playerScore;
     }
 
-
-
-    public boolean placeDomino(Domino domino, DominoHumanPlayer player) {
-        //cannot place because the arraylists are neither initialized nor Domino objects
-        return false;
-    }
-
-    public boolean drawDomino(DominoHumanPlayer player){
-        //cannot place because the arraylists are neither initialized nor Domino objects
-        return false;
-    }
 }

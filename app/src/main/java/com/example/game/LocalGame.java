@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.dominoes.Domino;
+import com.example.dominoes.DominoHumanPlayer;
 import com.example.game.actionMsg.GameAction;
 import com.example.game.actionMsg.GameOverAckAction;
 import com.example.game.actionMsg.MyNameIsAction;

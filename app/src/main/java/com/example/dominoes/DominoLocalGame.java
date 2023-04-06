@@ -1,5 +1,7 @@
 package com.example.dominoes;
 
+import android.view.View;
+
 import com.example.game.GamePlayer;
 import com.example.game.LocalGame;
 import com.example.game.actionMsg.GameAction;
@@ -51,6 +53,18 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean makeMove(GameAction action) {
+        return false;
+    }
+
+    public boolean placeDomino(Domino domino, DominoHumanPlayer player, View view) {
+        if(player.hasDomino()){return false;}
+        else {
+            player.onClick(view);
+        }
+        return false;
+    }
+
+    public boolean passTurn(DominoHumanPlayer player){
         return false;
     }
 }

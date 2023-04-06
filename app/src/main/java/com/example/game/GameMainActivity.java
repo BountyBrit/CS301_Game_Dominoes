@@ -332,6 +332,7 @@ View.OnClickListener {
 		// start the game; then return null to indicate that the launch was
 		// successful
 		game.start(players);
+		Log.i("is returning null", "Shit");
 		return null;
 
 	}// launchGame
