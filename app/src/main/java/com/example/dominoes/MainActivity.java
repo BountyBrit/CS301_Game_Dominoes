@@ -1,7 +1,6 @@
 package com.example.dominoes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.dominoes.GameFramework.players.Domino;
 
 import android.os.Bundle;
 import android.view.View;

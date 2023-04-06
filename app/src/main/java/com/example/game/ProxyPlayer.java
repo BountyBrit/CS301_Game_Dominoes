@@ -2,10 +2,11 @@ package com.example.game;
 
 import android.util.Log;
 
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.util.NetworkObjectPasser;
+import com.example.game.actionMsg.GameAction;
+import com.example.game.infoMsg.BindGameInfo;
+import com.example.game.infoMsg.GameInfo;
+import com.example.game.util.NetworkObjectPasser;
+
 
 /**
  * A Player object that is used as a proxy for the real player that is on another
@@ -120,7 +121,8 @@ public class ProxyPlayer implements GamePlayer {
      */
     public void setAsGui(GameMainActivity a) {
     }
-    
+
+
     /**
      * Tells whether the this player requires a GUI.
      * 

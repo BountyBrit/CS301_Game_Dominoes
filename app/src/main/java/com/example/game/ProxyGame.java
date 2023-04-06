@@ -2,13 +2,14 @@ package com.example.game;
 
 import android.util.Log;
 
+import com.example.game.actionMsg.GameAction;
+import com.example.game.infoMsg.GameInfo;
+import com.example.game.util.IPCoder;
+import com.example.game.util.NetworkObjectPasser;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.util.IPCoder;
-import edu.up.cs301.game.util.NetworkObjectPasser;
 
 /**
  * A Game object that is used as a proxy for the real game that is on another
@@ -169,5 +170,7 @@ public class ProxyGame implements Game {
 			players[0].sendInfo(unqueuedObject);
 		}
 	}
+
+
 }
 

@@ -1,8 +1,10 @@
 package com.example.game.infoMsg;
 
+import com.example.game.Game;
+
 import java.io.Serializable;
 
-import edu.up.cs301.game.Game;
+
 
 /**
  * An informational message that is sent from the game to a player.  The

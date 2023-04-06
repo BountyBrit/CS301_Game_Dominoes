@@ -1,8 +1,10 @@
 package com.example.game.actionMsg;
 
+import com.example.dominoes.RealPlayer;
+import com.example.game.GamePlayer;
+
 import java.io.Serializable;
 
-import edu.up.cs301.game.GamePlayer;
 
 /**
  * An action for a generic game.  A game action is something that a player
@@ -35,8 +37,8 @@ public abstract class GameAction implements Serializable {
      * @param player
      * 		the player who created the action
      */
-    public GameAction(GamePlayer player) {
-        this.player = player;
+    public GameAction(RealPlayer player) {
+        this.player = (GamePlayer) player;
     }
 
     /**

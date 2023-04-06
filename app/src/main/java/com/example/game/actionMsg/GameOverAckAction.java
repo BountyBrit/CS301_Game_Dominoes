@@ -1,6 +1,8 @@
 package com.example.game.actionMsg;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.dominoes.RealPlayer;
+import com.example.game.GamePlayer;
+
 
 /**
  * An action by which the player acknowledges that the game is over.
@@ -20,6 +22,6 @@ public class GameOverAckAction extends GameAction {
 	 * 		the player to sent the action
 	 */
 	public GameOverAckAction(GamePlayer p) {
-		super(p);
+		super((RealPlayer) p);
 	}
 }

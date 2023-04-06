@@ -1,6 +1,8 @@
 package com.example.game.actionMsg;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.dominoes.RealPlayer;
+import com.example.game.GamePlayer;
+
 
 /**
  * An action by which the player tells the game its name
@@ -25,7 +27,7 @@ public class MyNameIsAction extends GameAction {
 	 * 		the player's name
 	 */
 	public MyNameIsAction(GamePlayer p, String name) {
-		super(p); // invoke superclass constructor
+		super((RealPlayer) p); // invoke superclass constructor
 		this.name = name; // set the name
 	}
 	

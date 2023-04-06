@@ -7,17 +7,18 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
-import edu.up.cs301.game.actionMsg.GameOverAckAction;
-import edu.up.cs301.game.actionMsg.MyNameIsAction;
-import edu.up.cs301.game.actionMsg.ReadyAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.infoMsg.GameOverInfo;
-import edu.up.cs301.game.infoMsg.StartGameInfo;
-import edu.up.cs301.game.infoMsg.TimerInfo;
-import edu.up.cs301.game.util.GameTimer;
-import edu.up.cs301.game.util.MessageBox;
-import edu.up.cs301.game.util.Tickable;
+import com.example.game.actionMsg.GameOverAckAction;
+import com.example.game.actionMsg.MyNameIsAction;
+import com.example.game.actionMsg.ReadyAction;
+import com.example.game.infoMsg.BindGameInfo;
+import com.example.game.infoMsg.GameInfo;
+import com.example.game.infoMsg.GameOverInfo;
+import com.example.game.infoMsg.StartGameInfo;
+import com.example.game.infoMsg.TimerInfo;
+import com.example.game.util.GameTimer;
+import com.example.game.util.MessageBox;
+import com.example.game.util.Tickable;
+
 
 /**
  * class GameHumanPlayer

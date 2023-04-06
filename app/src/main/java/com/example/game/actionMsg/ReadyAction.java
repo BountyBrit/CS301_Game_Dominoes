@@ -1,6 +1,8 @@
 package com.example.game.actionMsg;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.dominoes.RealPlayer;
+import com.example.game.GamePlayer;
+
 
 /**
  * An action by which the player tells the game its name
@@ -20,6 +22,6 @@ public class ReadyAction extends GameAction {
 	 * 		the player who sent the action
 	 */
 	public ReadyAction(GamePlayer p) {
-		super(p);
+		super((RealPlayer) p);
 	}
 }

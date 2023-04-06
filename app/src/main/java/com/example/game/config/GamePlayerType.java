@@ -1,6 +1,7 @@
 package com.example.game.config;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.game.GamePlayer;
+
 
 /**
  * class GamePlayerType

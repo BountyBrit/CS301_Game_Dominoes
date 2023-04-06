@@ -5,18 +5,18 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.actionMsg.GameOverAckAction;
-import edu.up.cs301.game.actionMsg.MyNameIsAction;
-import edu.up.cs301.game.actionMsg.ReadyAction;
-import edu.up.cs301.game.actionMsg.TimerAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameOverInfo;
-import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
-import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
-import edu.up.cs301.game.infoMsg.StartGameInfo;
-import edu.up.cs301.game.util.GameTimer;
-import edu.up.cs301.game.util.Tickable;
+import com.example.game.actionMsg.GameAction;
+import com.example.game.actionMsg.GameOverAckAction;
+import com.example.game.actionMsg.MyNameIsAction;
+import com.example.game.actionMsg.ReadyAction;
+import com.example.game.actionMsg.TimerAction;
+import com.example.game.infoMsg.BindGameInfo;
+import com.example.game.infoMsg.GameOverInfo;
+import com.example.game.infoMsg.IllegalMoveInfo;
+import com.example.game.infoMsg.NotYourTurnInfo;
+import com.example.game.infoMsg.StartGameInfo;
+import com.example.game.util.GameTimer;
+import com.example.game.util.Tickable;
 
 /**
  * A class that knows how to play the game. The data in this class represent the

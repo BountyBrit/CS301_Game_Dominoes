@@ -23,6 +23,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.dominoes.R;
+import com.example.game.config.GameConfig;
+import com.example.game.config.GamePlayerType;
+import com.example.game.util.IPCoder;
+import com.example.game.util.MessageBox;
+
 import java.util.ArrayList;
 
 import edu.up.cs301.game.config.GameConfig;

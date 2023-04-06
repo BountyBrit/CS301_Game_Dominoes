@@ -3,6 +3,10 @@ package com.example.game.config;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.game.GameMainActivity;
+import com.example.game.GamePlayer;
+import com.example.game.ProxyPlayer;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,9 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import edu.up.cs301.game.GameMainActivity;
-import edu.up.cs301.game.GamePlayer;
-import edu.up.cs301.game.ProxyPlayer;
+
 
 /**
  * GameConfig class

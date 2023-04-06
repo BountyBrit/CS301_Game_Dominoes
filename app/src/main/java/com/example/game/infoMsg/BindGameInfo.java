@@ -1,6 +1,7 @@
 package com.example.game.infoMsg;
 
-import edu.up.cs301.game.Game;
+import com.example.game.Game;
+
 
 /**
  * A message from the game to a player that tells the player:
