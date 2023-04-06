@@ -204,7 +204,7 @@ public class DominoGameState {
 
     //Sets the player 4 score
     public void setPlayer4Score(int playerScore) {
-        scores[2] = playerScore;
+        scores[3] = playerScore;
     }
 
 
