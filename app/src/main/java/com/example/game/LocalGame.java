@@ -95,12 +95,10 @@ public abstract class LocalGame implements Game, Tickable {
 			
 			// create a thread that loops, waiting for actions;
 			// start the thread
-			Runnable runnable = new Runnable() {
-				public void run() {
-					Looper.prepare();
-					myHandler = new MyHandler(LocalGame.this);
-					Looper.loop();
-				}
+			Runnable runnable = () -> {
+				Looper.prepare();
+				myHandler = new MyHandler(LocalGame.this);
+				Looper.loop();
 			};
 			Thread thread = new Thread(runnable);
 			thread.setName("Local Game");

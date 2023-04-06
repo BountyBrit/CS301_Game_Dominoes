@@ -20,9 +20,6 @@ public class DominoLocalGame extends LocalGame {
         return false;
     }
 
-    public boolean isGameOver() {
-        return false;
-    }
 
     public void addScore(){
 
@@ -38,12 +35,17 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-
+        DominoGameState copyDGS = new DominoGameState(dgs);
+        p.sendInfo(copyDGS);
     }
 
     @Override
     protected boolean canMove(int playerIdx) {
-        return false;
+        if (playerIdx == dgs.getCurrentPlayer()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
