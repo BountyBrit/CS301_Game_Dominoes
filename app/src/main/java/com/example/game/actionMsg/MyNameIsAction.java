@@ -7,7 +7,7 @@ import com.example.game.GamePlayer;
  * An action by which the player tells the game its name
  * (typically the human's name, if it's a GameHumanPlayer).
  *
- * @author Steven R. Vegdahl 
+ * @author Orignially Steve Vegdahl
  * @version July 2013
  */
 public class MyNameIsAction extends GameAction {
