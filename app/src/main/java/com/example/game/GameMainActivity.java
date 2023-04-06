@@ -73,6 +73,9 @@ View.OnClickListener {
 	// has started
 	private boolean doingConfiguration = true;
 
+	//ArrayList of the buttons with the domino hands
+	private ArrayList<Button> handButtons;
+
 	/**
 	 * contains the game configuration this activity will be used to initialize
 	 */
@@ -523,7 +526,7 @@ View.OnClickListener {
 		//Start Game Button
 		else if (button.getId() == R.id.playGameButton) {
 			//the buttons that correspond with the hands in an array
-			ArrayList<Button> handButtons = new ArrayList<>();
+			handButtons = new ArrayList<>();
 			handButtons.add(button.findViewById(R.id.handButton1));
 			handButtons.add(button.findViewById(R.id.handButton2));
 			handButtons.add(button.findViewById(R.id.handButton3));
