@@ -1,6 +1,10 @@
 package com.example.dominoes;
 
-public class DominoLocalGame {
+import com.example.game.GamePlayer;
+import com.example.game.LocalGame;
+import com.example.game.actionMsg.GameAction;
+
+public class DominoLocalGame extends LocalGame {
     private int lastWinner;
     private int currentWinner;
     private DominoGameState dgs;
@@ -30,5 +34,25 @@ public class DominoLocalGame {
 
     public void alternatePlayer(){
 
+    }
+
+    @Override
+    protected void sendUpdatedStateTo(GamePlayer p) {
+
+    }
+
+    @Override
+    protected boolean canMove(int playerIdx) {
+        return false;
+    }
+
+    @Override
+    protected String checkIfGameOver() {
+        return null;
+    }
+
+    @Override
+    protected boolean makeMove(GameAction action) {
+        return false;
     }
 }

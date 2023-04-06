@@ -1,6 +1,5 @@
 package com.example.game.actionMsg;
 
-import com.example.dominoes.RealPlayer;
 import com.example.game.GamePlayer;
 
 
@@ -27,7 +26,7 @@ public class MyNameIsAction extends GameAction {
 	 * 		the player's name
 	 */
 	public MyNameIsAction(GamePlayer p, String name) {
-		super((RealPlayer) p); // invoke superclass constructor
+		super((GamePlayer) p); // invoke superclass constructor
 		this.name = name; // set the name
 	}
 	

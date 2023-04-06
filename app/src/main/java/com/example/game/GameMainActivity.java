@@ -31,11 +31,6 @@ import com.example.game.util.MessageBox;
 
 import java.util.ArrayList;
 
-import edu.up.cs301.game.config.GameConfig;
-import edu.up.cs301.game.config.GamePlayerType;
-import edu.up.cs301.game.util.IPCoder;
-import edu.up.cs301.game.util.MessageBox;
-
 /**
  * class GameMainActivity
  * 

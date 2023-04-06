@@ -1,13 +1,13 @@
 package com.example.dominoes;
 
-import android.app.GameState;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Hashtable;
-import java.util.List;
-import com.example.dominoes.Player;
+
+import com.example.game.GamePlayer;
+import com.example.game.LocalGame;
+import com.example.game.actionMsg.GameAction;
+import com.example.game.infoMsg.GameState;
 
 /** DominoGameState
  * This class is the GameState of the Domino Game
@@ -17,7 +17,7 @@ import com.example.dominoes.Player;
  * @author Jackson Smith
  *
  */
-public class DominoGameState {
+public class DominoGameState extends GameState {
 
     // instance variables for the game state
     private int[] scores;
@@ -26,10 +26,9 @@ public class DominoGameState {
 
     private ArrayList<Domino> tiles;
 
-    private RealPlayer Human;
-    private AIPlayer Computer1;
-    private AIPlayer Computer2;
-    private AIPlayer Computer3;
+    private DominoComputerPlayer Computer1;
+    private DominoComputerPlayer Computer2;
+    private DominoComputerPlayer Computer3;
 
     private int currentPlayer;
 
@@ -209,14 +208,13 @@ public class DominoGameState {
 
 
 
-    public boolean placeDomino(Domino domino, Player player) {
+    public boolean placeDomino(Domino domino, DominoHumanPlayer player) {
         //cannot place because the arraylists are neither initialized nor Domino objects
         return false;
     }
 
-    public boolean drawDomino(Player player){
+    public boolean drawDomino(DominoHumanPlayer player){
         //cannot place because the arraylists are neither initialized nor Domino objects
         return false;
     }
-
 }

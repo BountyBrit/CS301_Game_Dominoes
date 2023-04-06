@@ -1,10 +1,11 @@
 package com.example.dominoes;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.game.GameMainActivity;
+import com.example.game.LocalGame;
+import com.example.game.config.GameConfig;
 
 import java.util.ArrayList;
 
@@ -15,23 +16,25 @@ import java.util.ArrayList;
  * @author Jackson Smith
  *
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class DominoMainActivity extends GameMainActivity {
     private Domino[][] dominoBoard;
     private int currentPlayer;
     ArrayList<Domino> currentPLayerHand;
     private boolean isGameOver = false;
     private ImageView dominoDeck;
     private ImageView playArea;
-    private RealPlayer realPlayer;
-    private AIPlayer aiPlayer;
+    private DominoComputerPlayer aiPlayer;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public GameConfig createDefaultConfig() {
+        return null;
     }
 
+    @Override
+    public LocalGame createLocalGame() {
+        return null;
+    }
 
     public void onClick(View view) {
         DominoGameState firstInstance = new DominoGameState();
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Domino tile = new Domino(1,2);
         String name = null;
-        Player player = new Player(null);
+        DominoHumanPlayer player = new DominoHumanPlayer(null);
         firstInstance.placeDomino(tile, player);
         firstInstance.drawDomino(player);
 
@@ -49,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void addPlayer() {
-
+        // null for now
     }
     public void removePlayer() {
-
+        // null for now
     }
 
 }

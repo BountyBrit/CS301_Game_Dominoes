@@ -1,6 +1,5 @@
 package com.example.game.actionMsg;
 
-import com.example.dominoes.RealPlayer;
 import com.example.game.GamePlayer;
 
 
@@ -22,6 +21,6 @@ public class GameOverAckAction extends GameAction {
 	 * 		the player to sent the action
 	 */
 	public GameOverAckAction(GamePlayer p) {
-		super((RealPlayer) p);
+		super((GamePlayer) p);
 	}
 }

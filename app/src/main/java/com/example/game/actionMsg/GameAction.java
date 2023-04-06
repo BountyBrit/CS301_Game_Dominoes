@@ -1,6 +1,5 @@
 package com.example.game.actionMsg;
 
-import com.example.dominoes.RealPlayer;
 import com.example.game.GamePlayer;
 
 import java.io.Serializable;
@@ -37,7 +36,7 @@ public abstract class GameAction implements Serializable {
      * @param player
      * 		the player who created the action
      */
-    public GameAction(RealPlayer player) {
+    public GameAction(GamePlayer player) {
         this.player = (GamePlayer) player;
     }
 

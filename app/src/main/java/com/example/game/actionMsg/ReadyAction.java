@@ -1,6 +1,5 @@
 package com.example.game.actionMsg;
 
-import com.example.dominoes.RealPlayer;
 import com.example.game.GamePlayer;
 
 
@@ -21,7 +20,5 @@ public class ReadyAction extends GameAction {
 	 * @param p
 	 * 		the player who sent the action
 	 */
-	public ReadyAction(GamePlayer p) {
-		super((RealPlayer) p);
-	}
+	public ReadyAction(GamePlayer p) {super((GamePlayer) p);}
 }
