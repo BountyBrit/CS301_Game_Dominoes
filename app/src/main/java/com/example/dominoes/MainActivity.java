@@ -5,6 +5,7 @@ import com.example.dominoes.GameFramework.players.Domino;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -16,10 +17,15 @@ import java.util.ArrayList;
  *
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Domino[][] DominoBoard;
+    private Domino[][] dominoBoard;
     private int currentPlayer;
     ArrayList<Domino> currentPLayerHand;
     private boolean isGameOver = false;
+    private ImageView dominoDeck;
+    private ImageView playArea;
+    private RealPlayer realPlayer;
+    private AIPlayer aiPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
     }
 
-    @Override
+
     public void onClick(View view) {
         DominoGameState firstInstance = new DominoGameState();
         DominoGameState secondInstance = new DominoGameState(firstInstance);
