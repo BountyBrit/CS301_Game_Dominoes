@@ -9,13 +9,13 @@ import com.example.game.config.GameConfig;
 
 import java.util.ArrayList;
 
-/** MainActivity
+/** DominoMainActivity
  *
  * @author britdannen
  * @author Alejandro Varela
  * @author Jackson Smith
  *
- * dummy to commit/push
+ *
  */
 public class DominoMainActivity extends GameMainActivity {
     private Domino[][] dominoBoard;
