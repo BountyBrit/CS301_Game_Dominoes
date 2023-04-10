@@ -14,10 +14,11 @@ import java.util.ArrayList;
 
 /** DominoMainActivity
  *
+ * DominoMainActivity is the primary activity for Domino's
+ *
  * @author britdannen
  * @author Alejandro Varela
  * @author Jackson Smith
- *
  *
  */
 public class DominoMainActivity extends GameMainActivity {
@@ -59,6 +60,21 @@ public class DominoMainActivity extends GameMainActivity {
 
     @Override
     public LocalGame createLocalGame() {return new DominoLocalGame();}
+
+    public void onClick(View view) {
+//        DominoGameState firstInstance = new DominoGameState();
+//        DominoGameState secondInstance = new DominoGameState(firstInstance);
+//
+//        Domino tile = new Domino(6,6);
+//        String name = null;
+//        DominoHumanPlayer player = new DominoHumanPlayer(null);
+//        firstInstance.placeDomino(tile, player);
+//        firstInstance.drawDomino(player);
+//
+//        ArrayList<Integer> board;
+//        board = firstInstance.getBoard();
+//        //board.add(tile);
+    }
 
     public void addPlayer() {
         // null for now
