@@ -7,6 +7,15 @@ import com.example.game.GamePlayer;
 import com.example.game.LocalGame;
 import com.example.game.actionMsg.GameAction;
 
+/**Domino Local Game
+ *
+ *Class DominoLocalGame controls the play of the game
+ *
+ * @Author Alejandro Varela Iturralde
+ * @Author Brit Dannen
+ * @Author Jackson Smith
+ *
+ */
 public class DominoLocalGame extends LocalGame {
     private int lastWinner;
     private int currentWinner;

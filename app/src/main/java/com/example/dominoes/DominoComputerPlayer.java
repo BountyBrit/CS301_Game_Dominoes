@@ -4,6 +4,15 @@ import com.example.game.GameComputerPlayer;
 import com.example.game.infoMsg.GameInfo;
 import java.util.Random;
 
+/**
+ *
+ * AI for Domino's
+ *
+ * @Author Alejandro Varela
+ * @Author Brit Dannen
+ * @Author Jackson Smith
+ *
+ */
 public class DominoComputerPlayer extends GameComputerPlayer {
     public DominoComputerPlayer(String initName) {super(initName);}
 
