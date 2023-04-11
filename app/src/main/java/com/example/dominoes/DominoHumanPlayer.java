@@ -102,6 +102,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         handButtons.add(button.findViewById(R.id.handButton5));
         handButtons.add(button.findViewById(R.id.handButton6));
         handButtons.add(button.findViewById(R.id.handButton7));
+
+        for(int i = 0; i < hand.size(); i++) {
+            handButtons.get(0).setText(hand.get(0).getEnd1() + ", " + hand.get(0).getEnd1());
+        }
     }
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}

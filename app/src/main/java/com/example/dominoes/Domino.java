@@ -10,7 +10,7 @@ package com.example.dominoes;
  *
  */
 public class Domino {
-    private int end1;
+    private Integer end1;
     private int end2;
 
     public Domino(int end1, int end2) {
