@@ -74,7 +74,7 @@ public class DominoLocalGame extends LocalGame {
 //        } else {
 //            return false;
 //        }
-        return true;
+        return false;
     }
 
     public boolean placeDomino(Domino domino, DominoHumanPlayer player, View view) {
@@ -84,12 +84,12 @@ public class DominoLocalGame extends LocalGame {
         } else {
             player.onClick(view);
         }
-        return false;
+         return false;
     }
 
     public boolean passTurn(DominoHumanPlayer player) {
         alternatePlayer();
-        return true;
+        return false;
     }
 
 

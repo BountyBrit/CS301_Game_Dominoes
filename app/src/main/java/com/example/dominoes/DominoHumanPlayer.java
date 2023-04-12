@@ -94,14 +94,14 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 //            }
 //        }
         //the buttons that correspond with the hands in an array
-        handButtons = new ArrayList<>();
-        handButtons.add(button.findViewById(R.id.handButton1));
-        handButtons.add(button.findViewById(R.id.handButton2));
-        handButtons.add(button.findViewById(R.id.handButton3));
-        handButtons.add(button.findViewById(R.id.handButton4));
-        handButtons.add(button.findViewById(R.id.handButton5));
-        handButtons.add(button.findViewById(R.id.handButton6));
-        handButtons.add(button.findViewById(R.id.handButton7));
+//        handButtons = new ArrayList<>();
+//        handButtons.add(button.findViewById(R.id.handButton1));
+//        handButtons.add(button.findViewById(R.id.handButton2));
+//        handButtons.add(button.findViewById(R.id.handButton3));
+//        handButtons.add(button.findViewById(R.id.handButton4));
+//        handButtons.add(button.findViewById(R.id.handButton5));
+//        handButtons.add(button.findViewById(R.id.handButton6));
+//        handButtons.add(button.findViewById(R.id.handButton7));
     }
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}

@@ -76,11 +76,11 @@ public class DominoMainActivity extends GameMainActivity {
 //        //board.add(tile);
     }
 
-    public void addPlayer() {
-        // null for now
-    }
-    public void removePlayer() {
-        // null for now
-    }
+//    public void addPlayer() {
+//        // null for now
+//    }
+//    public void removePlayer() {
+//        // null for now
+//    }
 
 }

@@ -34,7 +34,6 @@ public class DominoGameState extends GameState {
     private DominoComputerPlayer Computer1;
     private DominoComputerPlayer Computer2;
     private DominoComputerPlayer Computer3;
-
     private int currentPlayer;
 
 
@@ -50,12 +49,12 @@ public class DominoGameState extends GameState {
         tiles = new ArrayList<>();
 
         //Create all of the pieces
-        for(int i = 6; i > -1; i--) {
-            for(int j = i; j > -1; j--) {
-                Domino interm = new Domino(i,j);
-                tiles.add(interm);
-            }
-        }
+//        for(int i = 6; i > -1; i--) {
+//            for(int j = i; j > -1; j--) {
+//                Domino interm = new Domino(i,j);
+//                tiles.add(interm);
+//            }
+//        }
 
 //        // Initializes hands and board to starting set
 //        for (int i = 0; i <= 6; i++) {
@@ -73,12 +72,12 @@ public class DominoGameState extends GameState {
         ArrayList<Domino> player3Hand = new ArrayList<>();
         ArrayList<Domino> player4Hand = new ArrayList<>();
 
-        for (int i = 0; i < 7; i++) {
-            player1Hand.add(tiles.remove(0));
-            player2Hand.add(tiles.remove(0));
-            player3Hand.add(tiles.remove(0));
-            player4Hand.add(tiles.remove(0));
-        }
+//        for (int i = 0; i < 7; i++) {
+//            player1Hand.add(tiles.remove(0));
+//            player2Hand.add(tiles.remove(0));
+//            player3Hand.add(tiles.remove(0));
+//            player4Hand.add(tiles.remove(0));
+//        }
         //
         hands.put(0, player1Hand);
         hands.put(1, player2Hand);
@@ -94,9 +93,9 @@ public class DominoGameState extends GameState {
         this.hands = other.hands;
         //copy the scores over
         this.scores = new int[4];
-        for(int i = 0; i < 4; i++) {
-            this.scores[i] = other.scores[i];
-        }
+//        for(int i = 0; i < 4; i++) {
+//            this.scores[i] = other.scores[i];
+//        }
 
         //current player
         currentPlayer = other.currentPlayer;
@@ -106,6 +105,16 @@ public class DominoGameState extends GameState {
         ArrayList<Domino> currHand = new ArrayList<>();
         return currHand;
     }
+    public boolean rotatePlayer() {
+//        if(currentPlayer == 4) {
+//            currentPlayer = 1;
+//            return true;
+//        }
+//        currentPlayer += 1;
+        return false;
+    }
+
+
 
 
     //
@@ -170,15 +179,6 @@ public class DominoGameState extends GameState {
 
     //Calls the current/players turn
     public int getCurrentPlayer() { return currentPlayer; }
-
-    public boolean rotatePlayer() {
-        if(currentPlayer == 4) {
-            currentPlayer = 1;
-            return true;
-        }
-        currentPlayer += 1;
-        return true;
-    }
 
     //Gets player 1 score
     public int getPlayer1Score() {
