@@ -20,6 +20,7 @@ public class DominoLocalGame extends LocalGame {
 //    private int lastWinner;
 //    private int currentWinner;
     private DominoGameState dgs;
+    private final int EMPTY = -1;
 
 
     /**
@@ -34,10 +35,6 @@ public class DominoLocalGame extends LocalGame {
 //    }
 
     public void addScore() {
-    }
-
-    public boolean isValid() {
-        return false;
     }
 
     public void alternatePlayer() {
