@@ -45,7 +45,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     @Override
     public void receiveInfo(GameInfo info) {
-
+        //null
     }
 
     public ArrayList<Domino> getHand() {
@@ -128,13 +128,13 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     }
 
-    //for(int i = 0; i < 7; i++) {
-      //  Button intrm = ((this.getHandButtons()).get(i));
-      //  intrm.setText(hands.get(currentPlayer).get(i).getEnd1() + ", " + hands.get(currentPlayer).get(i).getEnd2());
-    //}
-    public ArrayList<Button> getHandButtons() {
-        return handButtons;
-    }
+//    for(int i = 0; i < 7; i++) {
+//        Button intrm = ((this.getHandButtons()).get(i));
+//        intrm.setText(hands.get(currentPlayer).get(i).getEnd1() + ", " + hands.get(currentPlayer).get(i).getEnd2());
+//    }
+//    public ArrayList<Button> getHandButtons() {
+//        return handButtons;
+//    }
 }
 
 

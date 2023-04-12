@@ -484,7 +484,6 @@ View.OnClickListener {
 		
 		// if the GUI many not have been fully initialized, ignore
 		if (justStarted) {
-
 			return;
 		}
 		

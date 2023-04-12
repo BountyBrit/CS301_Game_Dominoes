@@ -27,44 +27,44 @@ public class DominoGameState extends GameState {
     // instance variables for the game state
     private int[] scores;
     private Hashtable<Integer, ArrayList<Domino>> hands =  new Hashtable<>();
-    private ArrayList<Integer> board;
+    private int[][] board;
 
     private ArrayList<Domino> tiles;
 
-    private DominoComputerPlayer Computer1;
-    private DominoComputerPlayer Computer2;
-    private DominoComputerPlayer Computer3;
+//    private DominoComputerPlayer Computer1;
+//    private DominoComputerPlayer Computer2;
+//    private DominoComputerPlayer Computer3;
     private int currentPlayer;
+    private int EMPTY = -1; //Designates empty space as -1
 
 
     public DominoGameState() {
-        //Initialises the game state
-        board = new ArrayList<>();
-        currentPlayer = 1;
+        // Initializes board
+        board = new int[10][10];
+
+        //Fills the board with empty spaces
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board.length; col++){
+                board[row][col] = EMPTY;
+            }
+        }
+
+        currentPlayer = 1;//sets current player
         scores = new int[4];
         for(int i = 0; i < 4; i++) {
             scores[i] = 0;
         }
 
+        // Initalizes tiles to be added to hands
         tiles = new ArrayList<>();
 
         //Create all of the pieces
-//        for(int i = 6; i > -1; i--) {
-//            for(int j = i; j > -1; j--) {
-//                Domino interm = new Domino(i,j);
-//                tiles.add(interm);
-//            }
-//        }
-
-//        // Initializes hands and board to starting set
-//        for (int i = 0; i <= 6; i++) {
-//            for (int j = i; j <= 6; j++) {
-//                //Adds all possible domino pieces to the draw pile
-//                board.add(i * 10 + j);
-//            }
-//        }
-//        //Shuffle the draw pile
-//        Collections.shuffle(board);
+        for(int i = 6; i > -1; i--) {
+            for(int j = i; j > -1; j--) {
+                Domino interm = new Domino(i,j);
+                tiles.add(interm);
+            }
+        }
 
         //Deal seven dominoes to each player within the Hashtable
         ArrayList<Domino> player1Hand = new ArrayList<>();
@@ -72,19 +72,19 @@ public class DominoGameState extends GameState {
         ArrayList<Domino> player3Hand = new ArrayList<>();
         ArrayList<Domino> player4Hand = new ArrayList<>();
 
-//        for (int i = 0; i < 7; i++) {
-//            player1Hand.add(tiles.remove(0));
-//            player2Hand.add(tiles.remove(0));
-//            player3Hand.add(tiles.remove(0));
-//            player4Hand.add(tiles.remove(0));
-//        }
-        //
+        for (int i = 0; i < 7; i++) {
+            player1Hand.add(tiles.remove(0));
+            player2Hand.add(tiles.remove(0));
+            player3Hand.add(tiles.remove(0));
+            player4Hand.add(tiles.remove(0));
+        }
+        // Assign player hands to hands list
         hands.put(0, player1Hand);
         hands.put(1, player2Hand);
         hands.put(2, player3Hand);
         hands.put(3, player4Hand);
 
-    }
+    } //DominoGameState cntr
 
     public DominoGameState(DominoGameState other) {
         //copy the board
@@ -114,34 +114,36 @@ public class DominoGameState extends GameState {
         return false;
     }
 
-
-
-
-    //
-    //These are the getters and setters for the game, which includes the
-    //score, current player/turn, and each players hand.
-    //
+    /*
+    * These are the getters and setters for the game, which includes the
+    * score, current player/turn, board, and each players hand.
+    */
+    public ArrayList<Domino> getPlayerHand(int playerIndx) {return hands.get(playerIndx);}
 
     //Gets player 1 domino hand
-    public ArrayList<Domino> getPLayer1Hand() {
-        return hands.get(0);
-    }
+//    public ArrayList<Domino> getPLayer1Hand() {
+//        return hands.get(0);
+//    }
+//
+//    //Sets player 2 domino hand
+//    public ArrayList<Domino> getPLayer2Hand() {
+//        return hands.get(1);
+//    }
+//
+//    //Gets player 3 domino hand
+//    public ArrayList<Domino> getPLayer3Hand() {
+//        return hands.get(2);
+//    }
+//
+//    //Sets player 4 domino hand
+//    public ArrayList<Domino> getPLayer4Hand() {
+//        return hands.get(3);
+//    }
 
-    //Sets player 2 domino hand
-    public ArrayList<Domino> getPLayer2Hand() {
-        return hands.get(1);
+    public void setPlayerHand(ArrayList<Domino> playerHand, int playerIndx) {
+        hands.remove(playerIndx);
+        hands.put(playerIndx, playerHand);
     }
-
-    //Gets player 3 domino hand
-    public ArrayList<Domino> getPLayer3Hand() {
-        return hands.get(2);
-    }
-
-    //Sets player 4 domino hand
-    public ArrayList<Domino> getPLayer4Hand() {
-        return hands.get(3);
-    }
-
 
     //Sets player 1 domino hands
     public void setPlayer1Hand(ArrayList<Domino> playerHand) {
@@ -168,13 +170,28 @@ public class DominoGameState extends GameState {
     }
 
     //Gets the board
-    public ArrayList<Integer> getBoard() {
-        return board;
+    public int[][] getBoard() {
+        return this.board;
     }
 
     //Initializes the board
-    public void setBoard(ArrayList<Integer> board) {
+    public void setBoard(int[][] board) {
         this.board = board;
+    }
+
+    // Get the value at a specific index on the board
+    public int getBoardSlot(int row, int col) {
+        return board[row][col];
+    }
+
+    // Set the value at a specific index on the board
+    public void setBoardSlot(int row, int col, int value) {
+        board[row][col] = value;
+    }
+
+    // Get the size of the board
+    public int getBoardSize() {
+        return board.length;
     }
 
     //Calls the current/players turn
@@ -219,5 +236,28 @@ public class DominoGameState extends GameState {
     public void setPlayer4Score(int playerScore) {
         scores[3] = playerScore;
     }
+
+    public void removeDominoFromHand(int playerIndx, Domino domino) {
+        getPlayerHand(playerIndx).remove(domino);
+    }
+
+    public void placeDomino(int playerIndex, Domino domino, int row1, int col1, int row2, int col2) {
+        // Check if the player has the domino in their hand
+        if (getPlayerHand(playerIndex).contains(domino)) {
+            // Check if the board index is valid
+            if ( (board[row1][col1] >= 0 && board[row1][col1] < getBoardSize())
+                    && (board[row2][col2] >= 0 && board[row2][col2] < getBoardSize()) ) {
+                // Check if the board slot is empty
+                if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
+                    // Add the domino to the board and remove it from the player's hand
+                    setBoardSlot(row1, col1, domino.getEnd1());
+                    setBoardSlot(row2, col2, domino.getEnd2());
+                    removeDominoFromHand(playerIndex, domino);
+                }
+            }
+        }
+    }//placeDomino
+
+
 
 }

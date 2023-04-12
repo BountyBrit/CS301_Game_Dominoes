@@ -25,15 +25,6 @@ public class DominoMainActivity extends GameMainActivity {
     // the port number that this game will use when playing over the network
     private static final int PORT_NUMBER = 2278;
 
-//    private Domino[][] dominoBoard;
-//    private int currentPlayer;
-//    ArrayList<Domino> currentPLayerHand;
-//    private boolean isGameOver = false;
-//    private ImageView dominoDeck;
-//    private ImageView playArea;
-//    private DominoComputerPlayer aiPlayer;
-
-
     @Override
     public GameConfig createDefaultConfig() {
         // Define the allowed player types
@@ -50,37 +41,16 @@ public class DominoMainActivity extends GameMainActivity {
             }});
 
         // Create a game configuration class for Domino:
-        GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "Domino", PORT_NUMBER);
+        GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4, "Domino", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
-        defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
+        defaultConfig.addPlayer("Computer 1", 1); // player 2: a computer player
+        defaultConfig.addPlayer("Computer 2", 1); // player 3: a computer player
+        defaultConfig.addPlayer("Computer 3", 1); // player 4: a computer player
         defaultConfig.setRemoteData("Remote Human Player", "", 0);
 
         return defaultConfig;
     }//createDefaultConfig
 
     @Override
-    public LocalGame createLocalGame() {return new DominoLocalGame();}
-
-    public void onClick(View view) {
-//        DominoGameState firstInstance = new DominoGameState();
-//        DominoGameState secondInstance = new DominoGameState(firstInstance);
-//
-//        Domino tile = new Domino(6,6);
-//        String name = null;
-//        DominoHumanPlayer player = new DominoHumanPlayer(null);
-//        firstInstance.placeDomino(tile, player);
-//        firstInstance.drawDomino(player);
-//
-//        ArrayList<Integer> board;
-//        board = firstInstance.getBoard();
-//        //board.add(tile);
-    }
-
-//    public void addPlayer() {
-//        // null for now
-//    }
-//    public void removePlayer() {
-//        // null for now
-//    }
-
+    public LocalGame createLocalGame() {return new DominoLocalGame();}//createLocalGame
 }
