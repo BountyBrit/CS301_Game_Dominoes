@@ -17,8 +17,8 @@ import com.example.game.actionMsg.GameAction;
  *
  */
 public class DominoLocalGame extends LocalGame {
-    private int lastWinner;
-    private int currentWinner;
+//    private int lastWinner;
+//    private int currentWinner;
     private DominoGameState dgs;
 
 
@@ -29,9 +29,9 @@ public class DominoLocalGame extends LocalGame {
         this.dgs = new DominoGameState();
     }
 
-    public boolean isRoundOver() {
-        return false;
-    }
+//    public boolean isRoundOver() {
+//        return false;
+//    }
 
     public void addScore() {
     }
@@ -41,7 +41,7 @@ public class DominoLocalGame extends LocalGame {
     }
 
     public void alternatePlayer() {
-        //dgs.rotatePlayer();
+        dgs.rotatePlayer();
     }
 
     @Override
@@ -62,6 +62,9 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
+//        if (dgs.getPlayerHand(dgs.getCurrentPlayer) == null){
+//            return "Congrats! You win";
+//        }
         return null;
     }
 
@@ -77,15 +80,6 @@ public class DominoLocalGame extends LocalGame {
         return true;
     }
 
-    public boolean placeDomino(Domino domino, DominoHumanPlayer player, View view) {
-
-        if (player.hasDomino()) {
-            return false;
-        } else {
-            player.onClick(view);
-        }
-        return false;
-    }
 
     public boolean passTurn(DominoHumanPlayer player) {
         alternatePlayer();
