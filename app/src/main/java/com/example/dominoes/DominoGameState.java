@@ -49,7 +49,7 @@ public class DominoGameState extends GameState {
             }
         }
 
-        currentPlayer = 1;//sets current player
+        currentPlayer = 0;//sets current player
         scores = new int[4];
         for(int i = 0; i < 4; i++) {
             scores[i] = 0;
@@ -106,8 +106,8 @@ public class DominoGameState extends GameState {
         return currHand;
     }
     public boolean rotatePlayer() {
-        if(currentPlayer == 4) {
-            currentPlayer = 1;
+        if(currentPlayer == 3) {
+            currentPlayer = 0;
             return true;
         }
         currentPlayer += 1;

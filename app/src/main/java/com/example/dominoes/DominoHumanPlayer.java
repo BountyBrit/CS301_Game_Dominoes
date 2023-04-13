@@ -1,9 +1,12 @@
 package com.example.dominoes;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.example.game.GameHumanPlayer;
 import com.example.game.GameMainActivity;
@@ -27,21 +30,38 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     /* instance variables */
 
     // These variables will reference widgets that will be modified during play
-    private Button    handButton1 = null;
-    private Button    handButton2 = null;
-    private Button    handButton3 = null;
-    private Button    handButton4 = null;
-    private Button    handButton5 = null;
-    private Button    handButton6 = null;
-    private Button    handButton7 = null;
-    private Button    passButton  = null;
+    private Button    handButton1;
+    private Button    handButton2;
+    private Button    handButton3;
+    private Button    handButton4;
+    private Button    handButton5;
+    private Button    handButton6;
+    private Button    handButton7;
+    private Button    passButton;
 
     private GameMainActivity myActivity;
 
     private int[][] board;
     private ArrayList<Domino> hand;
+    private ArrayList<Button> handButtons = new ArrayList<>();
 
+    Button[][] boardButtons = new Button[10][10];
+
+    private boolean boardButtonClicked = false;
+
+
+    public void addHandButtons() {
+        handButtons.add(handButton1);
+        handButtons.add(handButton2);
+        handButtons.add(handButton3);
+        handButtons.add(handButton4);
+        handButtons.add(handButton5);
+        handButtons.add(handButton6);
+        handButtons.add(handButton7);
+    }
     private int score;
+
+    private int dominoClicked;
 
     public DominoHumanPlayer(String name) {
         super(name);
@@ -60,8 +80,12 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
         // Set handButton text to dominos in player's hand
         DominoGameState dgs = new DominoGameState((DominoGameState) info);
-        hand = dgs.getPlayerHand(0);
+        hand = dgs.getPlayerHand(playerNum);
         board = dgs.getBoard();
+        boardButtons = new Button[10][10];
+
+        addHandButtons();
+
         handButton1.setText(hand.get(0).toString());
         handButton2.setText(hand.get(1).toString());
         handButton3.setText(hand.get(2).toString());
@@ -70,9 +94,26 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         handButton6.setText(hand.get(5).toString());
         handButton7.setText(hand.get(6).toString());
 
+        for (int i = 0; i < hand.size(); i++){
+            Button dominoButton = handButtons.get(i);
+            Domino domino = hand.get(i);
+
+            dominoButton.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int clickedIndex = hand.indexOf(domino);
+                    dominoClicked = clickedIndex;
+                    Log.i("DominoClicked", toStringDomino());
+                }
+            });
+        }
+
         // Update the board and player's hand
     }
 
+    public String toStringDomino(){
+        return ""+dominoClicked;
+    }
     public ArrayList<Domino> getHand() {
         return hand;
     }
@@ -110,13 +151,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 this.game.sendAction(pass);
                 button.invalidate();
                 break;
-//            case R.id.handButton1:
-//                switch (button.getId()) {
-//                    case
-//                        break;
-//                }
-//                break;
-//
         }
     }
 
@@ -132,7 +166,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         activity.setContentView(R.layout.domino_layout);
 
         //Initialize the widget reference member variables
-        this.passButton          = (Button)activity.findViewById(R.id.pass_button);
+        this.passButton  = (Button)activity.findViewById(R.id.pass_button);
 
         this.handButton1 = (Button)activity.findViewById(R.id.handButton1);
         this.handButton2 = (Button)activity.findViewById(R.id.handButton2);
@@ -141,6 +175,31 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         this.handButton5 = (Button)activity.findViewById(R.id.handButton5);
         this.handButton6 = (Button)activity.findViewById(R.id.handButton6);
         this.handButton7 = (Button)activity.findViewById(R.id.handButton7);
+
+        for (int i = 0; i < boardButtons.length; i++) {
+            for (int j = 0; j < boardButtons.length; j++) {
+                boardButtons[i][j] = new Button(getTopView().getContext());
+                boardButtons[i][j].setTag("Button" + i + "_" + j) ;
+
+                boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View btn) {
+                        boardButtonClicked = true;
+
+                        Log.i("BoardClicked", "fuck");
+                    }
+                });
+            }
+        }
+        TableLayout tableLayout = activity.findViewById(R.id.table_layout);
+        for (int i = 0; i < boardButtons.length; i++) {
+            TableRow tableRow = new TableRow(getTopView().getContext());
+            for (int j = 0; j < boardButtons.length; j++) {
+                tableRow.addView(boardButtons[i][j]);
+            }
+            tableLayout.addView(tableRow);
+        }
+
 
 
         //Listen for button presses

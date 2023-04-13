@@ -66,12 +66,14 @@ public class DominoLocalGame extends LocalGame {
         if (action instanceof DominoPassAction) {
             passTurn();
             return true;
-        } //else if (action instanceof DominoPlaceAction) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-        return true;
+        } else if (action instanceof DominoPlaceAction) {
+            //dgs.placeDomino(dgs.getCurrentPlayer(),dgs.getPlayerHand(dgs.getCurrentPlayer()).get(6), );
+            passTurn();
+            return true;
+        } else {
+            return false;
+        }
+        //return true;
     }
 
 
