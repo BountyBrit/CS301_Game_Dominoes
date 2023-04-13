@@ -29,10 +29,6 @@ public class DominoLocalGame extends LocalGame {
         this.dgs = new DominoGameState();
     }
 
-//    public boolean isRoundOver() {
-//        return false;
-//    }
-
     public void addScore() {
     }
 
@@ -52,12 +48,12 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean canMove(int playerIdx) {
-//        if (playerIdx == dgs.getCurrentPlayer()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-        return true;
+        if (playerIdx == dgs.getCurrentPlayer()) {
+            return true;
+        } else {
+            return false;
+        }
+//        return true;
     }
 
     @Override
@@ -70,9 +66,10 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean makeMove(GameAction action) {
-//        if (action instanceof DominoPlaceAction) {
-//            return true;
-//        } else if (action instanceof DominoPassAction) {
+        if (action instanceof DominoPassAction) {
+            passTurn();
+            return true;
+        } //else if (action instanceof DominoPlaceAction) {
 //            return true;
 //        } else {
 //            return false;
@@ -81,7 +78,7 @@ public class DominoLocalGame extends LocalGame {
     }
 
 
-    public boolean passTurn(DominoHumanPlayer player) {
+    public boolean passTurn() {
         alternatePlayer();
         return true;
     }
