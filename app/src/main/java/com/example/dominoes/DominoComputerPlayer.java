@@ -26,6 +26,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
         dgs = new DominoGameState((DominoGameState)info);
         board = dgs.getBoard();
         ArrayList<Domino> hand = dgs.getPlayerHand(playerNum);
+
         if (dgs.getCurrentPlayer() != playerNum) {
             return;
         } //return

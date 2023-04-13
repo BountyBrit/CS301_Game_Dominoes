@@ -106,11 +106,11 @@ public class DominoGameState extends GameState {
         return currHand;
     }
     public boolean rotatePlayer() {
-//        if(currentPlayer == 4) {
-//            currentPlayer = 1;
-//            return true;
-//        }
-//        currentPlayer += 1;
+        if(currentPlayer == 4) {
+            currentPlayer = 1;
+            return true;
+        }
+        currentPlayer += 1;
         return false;
     }
 
@@ -250,6 +250,7 @@ public class DominoGameState extends GameState {
                 // Check if the board slot is empty
                 if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
                     // Add the domino to the board and remove it from the player's hand
+                    //isValid
                     setBoardSlot(row1, col1, domino.getEnd1());
                     setBoardSlot(row2, col2, domino.getEnd2());
                     removeDominoFromHand(playerIndex, domino);
