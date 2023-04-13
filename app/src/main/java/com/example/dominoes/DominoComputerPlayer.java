@@ -46,7 +46,6 @@ public class DominoComputerPlayer extends GameComputerPlayer {
     protected int[] aiMove(int[][] board, ArrayList<Domino> hand) {
         int side1 = EMPTY;
         int side2 = EMPTY;
-        int dominoUsed = EMPTY;
         int[] location = new int[5];
         location[0] = EMPTY;
         location[1] = EMPTY;
@@ -63,10 +62,10 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                     }
                 }
             }
-        }
+        }//finds somewhere for the first side of the domino to be placed
         if(location[0] == EMPTY) {
-            aiMove(board, hand);
-        }
+            return location;
+        }//if location is EMPTY then there is no place for the domino to get placed so it returns an empty array that will eventually pass the turn
         for(int i = location[0] - 1; i < location[0] + 2; i++) {
             for(int j = location[1] - 1; i < location[1] + 2; j++) {
                 if(dgs.isValid(i, j, side2, 2)) {
@@ -75,7 +74,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                     break;
                 }
             }
-        }
+        }//looks for the second side of the domino to get placed
         return location;
     }
 }

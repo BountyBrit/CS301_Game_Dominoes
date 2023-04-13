@@ -120,53 +120,9 @@ public class DominoGameState extends GameState {
     */
     public ArrayList<Domino> getPlayerHand(int playerIndx) {return hands.get(playerIndx);}
 
-    //Gets player 1 domino hand
-//    public ArrayList<Domino> getPLayer1Hand() {
-//        return hands.get(0);
-//    }
-//
-//    //Sets player 2 domino hand
-//    public ArrayList<Domino> getPLayer2Hand() {
-//        return hands.get(1);
-//    }
-//
-//    //Gets player 3 domino hand
-//    public ArrayList<Domino> getPLayer3Hand() {
-//        return hands.get(2);
-//    }
-//
-//    //Sets player 4 domino hand
-//    public ArrayList<Domino> getPLayer4Hand() {
-//        return hands.get(3);
-//    }
-
     public void setPlayerHand(ArrayList<Domino> playerHand, int playerIndx) {
         hands.remove(playerIndx);
         hands.put(playerIndx, playerHand);
-    }
-
-    //Sets player 1 domino hands
-    public void setPlayer1Hand(ArrayList<Domino> playerHand) {
-        hands.remove(0);
-        hands.put(0, playerHand);
-    }
-
-    //Sets player 2 domino hand
-    public void setPlayer2Hand(ArrayList<Domino> playerHand) {
-        hands.remove(1);
-        hands.put(1, playerHand);
-    }
-
-    //Sets player 3 domino hand
-    public void setPlayer3Hand(ArrayList<Domino> playerHand) {
-        hands.remove(2);
-        hands.put(2, playerHand);
-    }
-
-    //Sets player 4 domino hand
-    public void setPlayer4Hand(ArrayList<Domino> playerHand) {
-        hands.remove(3);
-        hands.put(3, playerHand);
     }
 
     //Gets the board
@@ -244,18 +200,14 @@ public class DominoGameState extends GameState {
     public void placeDomino(int playerIndex, Domino domino, int row1, int col1, int row2, int col2) {
         // Check if the player has the domino in their hand
         if (getPlayerHand(playerIndex).contains(domino)) {
-            // Check if the board index is valid
-            if ( (board[row1][col1] >= 0 && board[row1][col1] < getBoardSize())
-                    && (board[row2][col2] >= 0 && board[row2][col2] < getBoardSize()) ) {
-                // Check if the board slot is empty
-                if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
-                    // Add the domino to the board and remove it from the player's hand
-                    //isValid
-                    setBoardSlot(row1, col1, domino.getEnd1());
-                    setBoardSlot(row2, col2, domino.getEnd2());
-                    removeDominoFromHand(playerIndex, domino);
+            // Check if the board slot is empty
+            if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
+                // Add the domino to the board and remove it from the player's hand
+                //isValid
+                setBoardSlot(row1, col1, domino.getEnd1());
+                setBoardSlot(row2, col2, domino.getEnd2());
+                removeDominoFromHand(playerIndex, domino);
                 }
-            }
         }
     }//placeDomino
 
@@ -267,6 +219,8 @@ public class DominoGameState extends GameState {
             }
         }
         if(empty == 100) {return true;}
+        //for the first turn always return true
+
         int emptyTotal = 0;
         int total = 0;
         for(int i = row - 1; i < row + 2; i++) {

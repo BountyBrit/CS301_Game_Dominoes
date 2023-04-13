@@ -58,7 +58,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         handButtons.add(handButton5);
         handButtons.add(handButton6);
         handButtons.add(handButton7);
-    }
+    }//adds the buttons in the hands to the hashtable that holds them at the index of their value
     private int score;
 
     private int dominoClicked;
@@ -86,6 +86,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
         addHandButtons();
 
+        //set the text of the handbuttons to the end values of their domino
         handButton1.setText(hand.get(0).toString());
         handButton2.setText(hand.get(1).toString());
         handButton3.setText(hand.get(2).toString());
@@ -113,35 +114,32 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     public String toStringDomino(){
         return ""+dominoClicked;
-    }
+    }//returns the domino clicked as a string value
+
     public ArrayList<Domino> getHand() {
         return hand;
-    }
+    }//returns the hand of the current player
 
     public int getScore() {
         return score;
-    }
+    }//
 
     public void setScore(int score) {
         this.score = score;
     }
 
-    public void addDominoToHand(Domino domino) {
-        hand.add(domino);
-    }
-
     public void removeDominoFromHand(Domino domino) {
         hand.remove(domino);
-    }
+    }//removes a dominno from the current players hand
 
     public boolean hasDomino() {
         Domino domino = null;
         return hand.contains(null);
-    }
+    }//returns whether this player has dominos
 
     public int getHandSize() {
         return hand.size();
-    }
+    }//returns the size of this player's hand
 
     @Override
     public void onClick(View button) {
@@ -151,7 +149,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 this.game.sendAction(pass);
                 button.invalidate();
                 break;
-        }
+        }//if the button clicked passes then the turn is passed
     }
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}

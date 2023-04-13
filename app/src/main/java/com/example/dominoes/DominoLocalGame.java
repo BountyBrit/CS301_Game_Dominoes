@@ -32,13 +32,13 @@ public class DominoLocalGame extends LocalGame {
 
     public void alternatePlayer() {
         dgs.rotatePlayer();
-    }
+    }//next player's turn
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         DominoGameState copyDGS = new DominoGameState(dgs);
         p.sendInfo(copyDGS);
-    }
+    }//sends the new gamestate to the gamestate object
 
     @Override
     protected boolean canMove(int playerIdx) {
@@ -48,7 +48,7 @@ public class DominoLocalGame extends LocalGame {
             return false;
         }
 //        return true;
-    }
+    }//tells a player if it is they're turn
 
     @Override
     protected String checkIfGameOver() {
@@ -56,7 +56,7 @@ public class DominoLocalGame extends LocalGame {
 //            return "Congrats! You win";
 //        }
         return null;
-    }
+    }//returns of the game has been won
 
     @Override
     protected boolean makeMove(GameAction action) {
@@ -71,13 +71,13 @@ public class DominoLocalGame extends LocalGame {
             return false;
         }
         //return true;
-    }
+    }//takes in action from player and calls place domino in DominoGameState
 
 
     public boolean passTurn() {
         alternatePlayer();
         return true;
-    }
+    }//passes the current player's turn
 
 
 }
