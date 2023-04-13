@@ -7,6 +7,9 @@ import com.example.game.actionMsg.GameAction;
  *
  * Constructor for GameAction
  *
+ * @Brit Dannen
+ * @Alejandro Varela
+ * @Jackson Smith
  */
 public class DominoPassAction extends GameAction {
     public DominoPassAction(GamePlayer player) {

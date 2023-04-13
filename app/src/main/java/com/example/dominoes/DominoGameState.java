@@ -120,6 +120,26 @@ public class DominoGameState extends GameState {
     */
     public ArrayList<Domino> getPlayerHand(int playerIndx) {return hands.get(playerIndx);}
 
+    //Gets player 1 domino hand
+    public ArrayList<Domino> getPLayer1Hand() {
+        return hands.get(0);
+    }
+
+    //Sets player 2 domino hand
+    public ArrayList<Domino> getPLayer2Hand() {
+        return hands.get(1);
+    }
+
+    //Gets player 3 domino hand
+    public ArrayList<Domino> getPLayer3Hand() {
+        return hands.get(2);
+    }
+
+    //Sets player 4 domino hand
+    public ArrayList<Domino> getPLayer4Hand() {
+        return hands.get(3);
+    }
+
     public void setPlayerHand(ArrayList<Domino> playerHand, int playerIndx) {
         hands.remove(playerIndx);
         hands.put(playerIndx, playerHand);

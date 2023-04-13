@@ -1,7 +1,5 @@
 package com.example.dominoes;
 
-import android.view.View;
-
 import com.example.game.GamePlayer;
 import com.example.game.actionMsg.GameAction;
 
@@ -9,7 +7,9 @@ import com.example.game.actionMsg.GameAction;
  *
  *Constructor for GameAction
  *
- * @author britdannen
+ * @Author Alejandro Varela
+ * @Author Brit Dannen
+ * @Author Jackson Smith
  */
 public class DominoPlaceAction extends GameAction {
 
