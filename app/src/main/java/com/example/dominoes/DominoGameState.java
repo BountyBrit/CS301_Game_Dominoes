@@ -49,7 +49,7 @@ public class DominoGameState extends GameState {
             }
         }
 
-        currentPlayer = 0;//sets current player
+        currentPlayer = 0;//sets current player to human
         scores = new int[4];
         for(int i = 0; i < 4; i++) {
             scores[i] = 0;
@@ -193,6 +193,8 @@ public class DominoGameState extends GameState {
         scores[3] = playerScore;
     }
 
+//    public Domino getCurrentDomino()
+
     public void removeDominoFromHand(int playerIndx, Domino domino) {
         getPlayerHand(playerIndx).remove(domino);
     }
@@ -225,7 +227,7 @@ public class DominoGameState extends GameState {
         int total = 0;
         for(int i = row - 1; i < row + 2; i++) {
             for(int j = col - 1; j < col + 2; j++) {
-                if(i > 9 || j > 9 || i < 0 || j < 0) {continue;}
+                if(i > 8 || j > 8 || i < 0 || j < 0) {continue;}
                 total++;
                 if(board[i][j] == EMPTY) {emptyTotal++;}
                 if(board[i][j] != val && board[i][j] != EMPTY ){return false;}

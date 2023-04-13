@@ -44,6 +44,11 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 	private GameMainActivity myActivity; // the current activity
 	private GameTimer myTimer = new GameTimer(this); // my player's timer
 	private boolean gameOver; // whether the game is over
+	private GamePlayer player;
+
+	public GamePlayer getPlayer() {
+		return this.player;
+	}
 
 	/**
 	 * constructor
@@ -63,9 +68,6 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 		// get new handler for this thread
 		this.myHandler = new Handler();
 	}
-
-    protected GameHumanPlayer() {
-    }
 
     /**
 	 * Returns this object's game timer
