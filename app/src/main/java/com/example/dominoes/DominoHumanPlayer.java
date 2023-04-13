@@ -190,7 +190,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View btn) {
-                        //boardButtonClicked = true;
                         row = finalI;
                         col = finalJ;
                         DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.super.getPlayer(), dominoClicked, row, col, row, (col + 1));
