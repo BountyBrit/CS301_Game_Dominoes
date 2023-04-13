@@ -2,6 +2,7 @@ package com.example.dominoes;
 
 import com.example.game.GameComputerPlayer;
 import com.example.game.infoMsg.GameInfo;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -19,6 +20,9 @@ public class DominoComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         DominoGameState dgs = new DominoGameState((DominoGameState)info);
+        int[][] board = dgs.getBoard();
+        ArrayList<Domino> hand = dgs.getPlayerHand(playerNum);
+
         if (dgs.getCurrentPlayer() != playerNum) {
             return;
         } //return
@@ -33,5 +37,5 @@ public class DominoComputerPlayer extends GameComputerPlayer {
 //            this.game.sendAction(dpa);
 //        }
 
-    }
+    }//receiveInfo
 }
