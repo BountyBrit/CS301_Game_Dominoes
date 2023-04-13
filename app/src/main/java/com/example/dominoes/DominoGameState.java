@@ -260,6 +260,13 @@ public class DominoGameState extends GameState {
     }//placeDomino
 
     public boolean isValid(int row, int col, int val, int side) {
+        int empty = 0;
+        for(int i = 0; i < 10; i++) {
+            for( int j = 0; j < 10; j++) {
+                empty++;
+            }
+        }
+        if(empty == 100) {return true;}
         int emptyTotal = 0;
         int total = 0;
         for(int i = row - 1; i < row + 2; i++) {

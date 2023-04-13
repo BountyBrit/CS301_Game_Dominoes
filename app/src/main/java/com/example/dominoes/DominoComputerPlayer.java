@@ -59,6 +59,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                         location[0] = i;
                         location[1] = j;
                         location[4] = x;
+                        break;
                     }
                 }
             }
@@ -71,6 +72,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                 if(dgs.isValid(i, j, side2, 2)) {
                     location[2] = i;
                     location[3] = j;
+                    break;
                 }
             }
         }
