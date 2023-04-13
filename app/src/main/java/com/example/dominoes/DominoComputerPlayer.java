@@ -17,14 +17,13 @@ import java.util.Random;
  */
 public class DominoComputerPlayer extends GameComputerPlayer {
     DominoGameState dgs;
-    int[][] board;
     private final int EMPTY = -1;
     public DominoComputerPlayer(String initName) {super(initName);}
 
     @Override
     protected void receiveInfo(GameInfo info) {
         dgs = new DominoGameState((DominoGameState)info);
-        board = dgs.getBoard();
+        int[][] board = dgs.getBoard();
         ArrayList<Domino> hand = dgs.getPlayerHand(playerNum);
 
         if (dgs.getCurrentPlayer() != playerNum) {
@@ -38,18 +37,17 @@ public class DominoComputerPlayer extends GameComputerPlayer {
         } else {
             sleep(2000);
             DominoPlaceAction dpa = new DominoPlaceAction(this);
-            this.game.sendAction(dpa);
-            aiMove(board, hand);
-            dgs.setBoard(board);
+            int[] stuff = aiMove(board, hand);
+//            this.game.sendAction(dpa, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
         }
     }
 
 
-    protected void aiMove(int[][] board, ArrayList<Domino> hand) {
+    protected int[] aiMove(int[][] board, ArrayList<Domino> hand) {
         int side1 = EMPTY;
         int side2 = EMPTY;
         int dominoUsed = EMPTY;
-        int[] location = new int[2];
+        int[] location = new int[5];
         location[0] = EMPTY;
         location[1] = EMPTY;
         for(int i = 0; i < board.length; i++) {
@@ -60,22 +58,22 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                     if(dgs.isValid(i,j,side1,1)) {
                         location[0] = i;
                         location[1] = j;
-                        dominoUsed = x;
+                        location[4] = x;
                     }
                 }
             }
         }
         if(location[0] == EMPTY) {
-            return;
+            aiMove(board, hand);
         }
         for(int i = location[0] - 1; i < location[0] + 2; i++) {
             for(int j = location[1] - 1; i < location[1] + 2; j++) {
                 if(dgs.isValid(i, j, side2, 2)) {
-                    board[location[0]][location[1]] = side1;
-                    board[i][j] = side2;
-                    hand.remove(dominoUsed);
+                    location[2] = i;
+                    location[3] = j;
                 }
             }
         }
+        return location;
     }
 }

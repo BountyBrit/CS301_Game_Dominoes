@@ -11,9 +11,9 @@ import com.example.game.actionMsg.GameAction;
  *
  *Class DominoLocalGame controls the play of the game
  *
- * @Author Alejandro Varela Iturralde
- * @Author Brit Dannen
- * @Author Jackson Smith
+ * @author Alejandro Varela Iturralde
+ * @author Brit Dannen
+ * @author Jackson Smith
  *
  */
 public class DominoLocalGame extends LocalGame {
@@ -28,9 +28,6 @@ public class DominoLocalGame extends LocalGame {
      */
     public DominoLocalGame() {
         this.dgs = new DominoGameState();
-    }
-
-    public void addScore() {
     }
 
     public void alternatePlayer() {
