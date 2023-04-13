@@ -14,8 +14,6 @@ import com.example.game.infoMsg.GameInfo;
 
 import java.util.ArrayList;
 
-//dummy comment
-
 
 /** Player
  * This class has all of the relevant information for a player
@@ -192,9 +190,11 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                     public void onClick(View btn) {
                         row = finalI;
                         col = finalJ;
-                        DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.super.getPlayer(), dominoClicked, row, col, row, (col + 1));
-                        DominoHumanPlayer.this.game.sendAction(place);
                         Log.d("BoardClicked", row + "_" + col);
+//                        DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, (col + 1));
+//                        DominoHumanPlayer.this.game.sendAction(place);// This line crashes the game when it sends to the game
+                        // Make a subclass of board button and hand button
+                        boardButtons[finalI][finalJ].setText(""+hand.get(dominoClicked).toString());
                     }
                 });
             }
