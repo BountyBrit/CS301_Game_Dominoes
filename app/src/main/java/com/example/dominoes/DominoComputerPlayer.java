@@ -36,9 +36,9 @@ public class DominoComputerPlayer extends GameComputerPlayer {
             this.game.sendAction(dpsa);
         } else {
             sleep(2000);
-            DominoPlaceAction dpa = new DominoPlaceAction(this);
             int[] stuff = aiMove(board, hand);
-//            this.game.sendAction(dpa, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
+            DominoPlaceAction dpa = new DominoPlaceAction(this, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
+            this.game.sendAction(dpa);
         }
     }
 

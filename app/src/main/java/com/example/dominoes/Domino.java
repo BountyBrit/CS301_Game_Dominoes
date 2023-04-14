@@ -13,11 +13,22 @@ public class Domino {
     private int end1;
     private int end2;
 
+    /**
+     * Sets end1 and end2 for dominos
+     *
+     * @param end1
+     * @param end2
+     */
     public Domino(int end1, int end2) {
         this.end1 = end1;
         this.end2 = end2;
     }
 
+    /**
+     * Getters and setters for Domino below
+     *
+     * @return
+     */
     public int getEnd1() {
         return end1;
     }
@@ -34,6 +45,11 @@ public class Domino {
         this.end2 = end2;
     }
 
+    /**
+     * Returns end2 and end1 has a string.
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "[" + end1 + "|" + end2 + "]";

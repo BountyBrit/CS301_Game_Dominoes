@@ -17,8 +17,6 @@ import com.example.game.actionMsg.GameAction;
  *
  */
 public class DominoLocalGame extends LocalGame {
-//    private int lastWinner;
-//    private int currentWinner;
     private DominoGameState dgs;
     private final int EMPTY = -1;
 
@@ -60,17 +58,24 @@ public class DominoLocalGame extends LocalGame {
 
     @Override
     protected boolean makeMove(GameAction action) {
-        if (action instanceof DominoPassAction) {
-            passTurn();
+        if (action instanceof DominoPassAction) {// Action is passing turn
+            alternatePlayer();
             return true;
-        } else if (action instanceof DominoPlaceAction) {
-            //dgs.placeDomino(dgs.getCurrentPlayer(),dgs.getPlayerHand(dgs.getCurrentPlayer()).get(6), );
-            passTurn();
+        } // Action is placing a domino
+        else if (action instanceof DominoPlaceAction) {
+            // Temporary Variables from DominoHumanPlayer
+            int DominoIndex = ((DominoPlaceAction) action).getDominoClicked();
+            int ROW_1 = ((DominoPlaceAction) action).getRow_1();
+            int COL_1 = ((DominoPlaceAction) action).getCol_1();
+            int ROW_2 = ((DominoPlaceAction) action).getRow_2();
+            int COL_2 = ((DominoPlaceAction) action).getCol_2();
+
+            // Placing the domino on the board in the current GameState
+            dgs.placeDomino(dgs.getCurrentPlayer(), dgs.getPlayerHand(dgs.getCurrentPlayer()).get(DominoIndex), ROW_1, COL_1, ROW_2, COL_2);
+            alternatePlayer();// Alternate to the next player
             return true;
-        } else {
-            return false;
         }
-        //return true;
+        return false;
     }//takes in action from player and calls place domino in DominoGameState
 
 
