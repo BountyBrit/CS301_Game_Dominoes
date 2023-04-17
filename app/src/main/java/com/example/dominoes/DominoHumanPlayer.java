@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 import android.graphics.Color;
+import android.graphics.Point;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -181,15 +182,15 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         for (int i = 0; i < boardButtons.length; i++) {
             for (int j = 0; j < boardButtons.length; j++) {
                 boardButtons[i][j] = new Button(getTopView().getContext());
-                boardButtons[i][j].setTag("Button" + i + "_" + j) ;
+                boardButtons[i][j].setTag(new Point(i, j)) ;
 
                 int finalI = i;
                 int finalJ = j;
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View btn) {
-                        row = finalI;
-                        col = finalJ;
+                        row = getRowFromTag((String) btn.getTag()); //set 
+                        col = getColFromTag((String) btn.getTag());
                         Log.d("BoardClicked", row + "_" + col);
 //                        DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, (col + 1));
 //                        DominoHumanPlayer.this.game.sendAction(place);// This line crashes the game when it sends to the game
@@ -212,6 +213,15 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         passButton.setOnClickListener(this);
     }//setAsGui
 
+    private int getRowFromTag(String tag) {
+
+        String[] rowAndColumn = tag.split("_");
+        return Integer.parseInt(rowAndColumn[0]);
+    }
+    private int getColFromTag(String tag) {
+        String[] rowAndColumn = tag.split("_");
+        return Integer.parseInt(rowAndColumn[1]);
+    }
 }
 
 
