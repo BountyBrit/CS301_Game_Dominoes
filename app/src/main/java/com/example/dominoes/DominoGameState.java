@@ -237,7 +237,9 @@ public class DominoGameState extends GameState {
         int empty = 0;
         for(int i = 0; i < 10; i++) {
             for( int j = 0; j < 10; j++) {
-                empty++;
+                if(board[i][j] == EMPTY) {
+                    empty++;
+                }
             }
         }
         if(empty == 100) {return true;}
@@ -248,7 +250,7 @@ public class DominoGameState extends GameState {
         for(int i = row - 1; i < row + 2; i++) {
             for(int j = col - 1; j < col + 2; j++) {
                 if(i > 9 || j > 9 || i < 0 || j < 0) {continue;}
-                if(board[i-1][j-1] != EMPTY || board[i+1][j-1] != EMPTY || board[i-1][j+1] != EMPTY || board[i+1][j+1] != EMPTY) {return false;}
+                //if(board[i-1][j-1] != EMPTY || board[i+1][j-1] != EMPTY || board[i-1][j+1] != EMPTY || board[i+1][j+1] != EMPTY) {return false;}
                 total++;
                 if(board[i][j] == EMPTY) {emptyTotal++;}
                 if(board[i][j] != val && board[i][j] != EMPTY ){return false;}
