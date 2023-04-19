@@ -71,7 +71,7 @@ public class DominoLocalGame extends LocalGame {
             int COL_2 = ((DominoPlaceAction) action).getCol_2();
 
             // Placing the domino on the board in the current GameState
-            dgs.placeDomino(dgs.getCurrentPlayer(), dgs.getPlayerHand(dgs.getCurrentPlayer()).get(DominoIndex), ROW_1, COL_1, ROW_2, COL_2);
+//            dgs.placeDomino(dgs.getCurrentPlayer(), dgs.getPlayerHand(dgs.getCurrentPlayer()).get(DominoIndex), ROW_1, COL_1, ROW_2, COL_2);
             alternatePlayer();// Alternate to the next player
             return true;
         }

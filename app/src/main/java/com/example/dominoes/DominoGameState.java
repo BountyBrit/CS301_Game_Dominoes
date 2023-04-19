@@ -119,7 +119,9 @@ public class DominoGameState extends GameState {
     * These are the getters and setters for the game, which includes the
     * score, current player/turn, board, and each players hand.
     */
-    public ArrayList<Domino> getPlayerHand(int playerIndx) {return hands.get(playerIndx);}
+    public ArrayList<Domino> getPlayerHand(int playerIndx) {
+        return hands.get(playerIndx);
+    }
 
     //Gets player 1 domino hand
     public ArrayList<Domino> getPLayer1Hand() {
@@ -218,25 +220,27 @@ public class DominoGameState extends GameState {
         getPlayerHand(playerIndx).remove(domino);
     }
 
-    public void placeDomino(int playerIndex, Domino domino, int row1, int col1, int row2, int col2) {
+    public void placeDomino(int playerIndex, Domino domino, int domino_clicked, int row1, int col1, int row2, int col2) {
         // Check if the player has the domino in their hand
-        if (getPlayerHand(playerIndex).contains(domino)) {
-            // Check if the board slot is empty
-            if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
+//        if (getPlayerHand(playerIndex).get(domino_clicked) == domino) {
+//            // Check if the board slot is empty
+//            if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
                 // Add the domino to the board and remove it from the player's hand
                 //isValid
                 setBoardSlot(row1, col1, domino.getEnd1());
                 setBoardSlot(row2, col2, domino.getEnd2());
                 removeDominoFromHand(playerIndex, domino);
-                }
-        }
+//                }
+//        }
     }//placeDomino
 
     public boolean isValid(int row, int col, int val, int side) {
         int empty = 0;
         for(int i = 0; i < 10; i++) {
             for( int j = 0; j < 10; j++) {
-                empty++;
+                if(board[i][j] == EMPTY) {
+                    empty++;
+                }
             }
         }
         if(empty == 100) {return true;}
@@ -247,7 +251,7 @@ public class DominoGameState extends GameState {
         for(int i = row - 1; i < row + 2; i++) {
             for(int j = col - 1; j < col + 2; j++) {
                 if(i > 9 || j > 9 || i < 0 || j < 0) {continue;}
-                if(board[i-1][j-1] != EMPTY || board[i+1][j-1] != EMPTY || board[i-1][j+1] != EMPTY || board[i+1][j+1] != EMPTY) {return false;}
+                //if(board[i-1][j-1] != EMPTY || board[i+1][j-1] != EMPTY || board[i-1][j+1] != EMPTY || board[i+1][j+1] != EMPTY) {return false;}
                 total++;
                 if(board[i][j] == EMPTY) {emptyTotal++;}
                 if(board[i][j] != val && board[i][j] != EMPTY ){return false;}
