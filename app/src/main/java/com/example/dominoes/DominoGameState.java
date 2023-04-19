@@ -23,7 +23,6 @@ import com.example.game.infoMsg.GameState;
  *
  */
 public class DominoGameState extends GameState {
-    //dummy comment
 
     // instance variables for the game state
     private int[] scores;

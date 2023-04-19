@@ -69,4 +69,32 @@ public class DominoGameStateTest {//dummy comment for push
         board[4][4] = 4;
         assertTrue(dgs.isValid(2, 4, 4, 1));
     }
+
+    @Test
+    public void getBoard(){
+        DominoGameState dgs = new DominoGameState();
+        int[][] board = dgs.getBoard();
+        for(int row = 0; row < board.length; row++){
+            for(int col = 0; col < board.length; col++){
+                board[row][col] = -1;
+            }
+        }
+        assertArrayEquals(board, dgs.getBoard());
+    }
+
+    @Test
+    public void getPlayerHand(){
+        DominoGameState dgs = new DominoGameState();
+        ArrayList<Domino> playerHand = new ArrayList<Domino>();
+        ArrayList<Domino> tiles= new ArrayList<>();
+        for(int i = 6; i > -1; i--) {
+            for(int j = i; j > -1; j--) {
+                Domino interm = new Domino(i,j);
+                tiles.add(interm);
+            }
+        }
+        for(int i = 0;i < 7; i++){
+            playerHand.add(tiles.remove(0));
+        }
+    }
 }
