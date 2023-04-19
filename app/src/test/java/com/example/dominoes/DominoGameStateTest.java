@@ -30,15 +30,8 @@ public class DominoGameStateTest {//dummy comment for push
     @Test
     public void placeDomino() throws Exception {
         DominoGameState dgs = new DominoGameState();
-        int playerIndx = 0;
         Domino domino1 = new Domino(6, 6);
-        int row = 0;
-        int col = 1;
-//        int[][] newBoard = dgs.getBoard();
-//        newBoard[row][col-1] = 6;
-//        newBoard[row][col] = 5;
-        dgs.placeDomino(playerIndx, domino1, 0, row, (col - 1), row, col);
-
+        dgs.placeDomino(0, domino1, 0, 0, (0), 0, 1);
         assertEquals(6, dgs.getBoard()[0][0]);
         assertEquals(6, dgs.getBoard()[0][1]);
     }

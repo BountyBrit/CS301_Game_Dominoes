@@ -50,8 +50,8 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     private boolean turn = true;
 
-    private int row;
-    private int col;
+    private int row = -1;
+    private int col = -1;
 
     public void addHandButtons() {
         handButtons.add(handButton1);
@@ -113,6 +113,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         }
 
         // Update the GUI
+
     }
 
     public ArrayList<Domino> getHand() {
@@ -179,35 +180,45 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
         // Creates and adds buttons to the array boardButtons,
         // then
-        for (int i = 0; i < boardButtons.length; i++) {
-            for (int j = 0; j < boardButtons.length; j++) {
-                boardButtons[i][j] = new Button(getTopView().getContext());
-                boardButtons[i][j].setTag(new Point(i, j)) ;
-
-                int finalI = i;
-                int finalJ = j;
-                boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View btn) {
-                        row = getRowFromTag((String) btn.getTag()); //set 
-                        col = getColFromTag((String) btn.getTag());
-                        Log.d("BoardClicked", row + "_" + col);
-//                        DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, (col + 1));
-//                        DominoHumanPlayer.this.game.sendAction(place);// This line crashes the game when it sends to the game
-                        // Make a subclass of board button and hand button
-                        boardButtons[finalI][finalJ].setText(""+hand.get(dominoClicked).toString());
-                    }
-                });
-            }
-        }
         TableLayout tableLayout = activity.findViewById(R.id.table_layout);
+
         for (int i = 0; i < boardButtons.length; i++) {
             TableRow tableRow = new TableRow(getTopView().getContext());
             for (int j = 0; j < boardButtons.length; j++) {
+                boardButtons[i][j] = new Button(getTopView().getContext());
+                boardButtons[i][j].setTag(i+"_"+j) ;
                 tableRow.addView(boardButtons[i][j]);
+
+//                int finalI = i;
+//                int finalJ = j;
+                boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View btn) {
+                        row = getRowFromTag((String)btn.getTag());
+                        col = getColFromTag((String) btn.getTag());
+                        Log.d("BoardClicked", row + " " + col);
+                        DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, (col + 1));
+                        DominoHumanPlayer.this.game.sendAction(place);// This line crashes the game when it sends to the game
+                        // Make a subclass of board button and hand button
+//                        boardButtons[row][col].setText(""+hand.get(dominoClicked).toString());
+                        if (boardButtons[row][col] != null) {
+                            boardButtons[row][col].setText(""+hand.get(dominoClicked).toString());
+                        }
+                    }
+                });
             }
             tableLayout.addView(tableRow);
         }
+
+
+//        TableLayout tableLayout = activity.findViewById(R.id.table_layout);
+//        for (int i = 0; i < boardButtons.length; i++) {
+//            TableRow tableRow = new TableRow(getTopView().getContext());
+//            for (int j = 0; j < boardButtons.length; j++) {
+//                tableRow.addView(boardButtons[i][j]);
+//            }
+//            tableLayout.addView(tableRow);
+//        }
 
         //Listen for button presses
         passButton.setOnClickListener(this);

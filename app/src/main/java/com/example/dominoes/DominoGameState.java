@@ -215,8 +215,10 @@ public class DominoGameState extends GameState {
         scores[3] = playerScore;
     }
 
-    public void removeDominoFromHand(int playerIndx, Domino domino) {
-        getPlayerHand(playerIndx).remove(domino);
+    public void removeDominoFromHand(int playerIndx, int domino_clicked) {
+        getPlayerHand(playerIndx).get(domino_clicked).setEnd1(-1);
+        getPlayerHand(playerIndx).get(domino_clicked).setEnd2(-1);
+        //      getPlayerHand(playerIndx).remove(domino);
     }
 
     public void placeDomino(int playerIndex, Domino domino, int domino_clicked, int row1, int col1, int row2, int col2) {
@@ -228,7 +230,7 @@ public class DominoGameState extends GameState {
                 //isValid
                 setBoardSlot(row1, col1, domino.getEnd1());
                 setBoardSlot(row2, col2, domino.getEnd2());
-                removeDominoFromHand(playerIndex, domino);
+                removeDominoFromHand(playerIndex, domino_clicked);
 //                }
 //        }
     }//placeDomino
