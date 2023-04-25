@@ -52,8 +52,11 @@ public class Domino {
      */
     @Override
     public String toString() {
-        return "[" + end1 + "|" + end2 + "]";
+        if (end1 == -1){
+            return "";
+        } else {
+            return "[" + end1 + "|" + end2 + "]";
+        }
     }
-
 
 }
