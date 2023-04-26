@@ -143,23 +143,16 @@ public class DominoGameState extends GameState {
     public int getCurrentPlayer() { return currentPlayer; }
 
     public void removeDominoFromHand(int playerIndx, int domino_clicked) {
+        // Sets the end values to -1
+        // toString in Domino will return empty string if end values are -1
         getPlayerHand(playerIndx).get(domino_clicked).setEnd1(-1);
         getPlayerHand(playerIndx).get(domino_clicked).setEnd2(-1);
-        //      getPlayerHand(playerIndx).remove(domino);
     }
 
     public void placeDomino(int playerIndex, Domino domino, int domino_clicked, int row1, int col1, int row2, int col2) {
-        // Check if the player has the domino in their hand
-//        if (getPlayerHand(playerIndex).get(domino_clicked) == domino) {
-//            // Check if the board slot is empty
-//            if ( (getBoardSlot(row1, col1) == EMPTY) && (getBoardSlot(row2, col2) == EMPTY) ) {
-                // Add the domino to the board and remove it from the player's hand
-                //isValid
-                setBoardSlot(row1, col1, domino.getEnd1());
-                setBoardSlot(row2, col2, domino.getEnd2());
-                removeDominoFromHand(playerIndex, domino_clicked);
-//                }
-//        }
+        setBoardSlot(row1, col1, domino.getEnd1());
+        setBoardSlot(row2, col2, domino.getEnd2());
+        removeDominoFromHand(playerIndex, domino_clicked);
     }//placeDomino
 
     public boolean isValid(int row, int col, int val, int side) {
