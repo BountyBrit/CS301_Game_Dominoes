@@ -2,6 +2,7 @@ package com.example.dominoes;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,15 +26,9 @@ import com.example.game.infoMsg.GameState;
 public class DominoGameState extends GameState {
 
     // instance variables for the game state
-    private int[] scores;
     private Hashtable<Integer, ArrayList<Domino>> hands =  new Hashtable<>();
     private int[][] board;
-
     private ArrayList<Domino> tiles;
-
-//    private DominoComputerPlayer Computer1;
-//    private DominoComputerPlayer Computer2;
-//    private DominoComputerPlayer Computer3;
     private int currentPlayer;
     private int EMPTY = -1; //Designates empty space as -1
 
@@ -48,12 +43,8 @@ public class DominoGameState extends GameState {
                 board[row][col] = EMPTY;
             }
         }
-
-        currentPlayer = 0;//sets current player to human
-        scores = new int[4];
-        for(int i = 0; i < 4; i++) {
-            scores[i] = 0;
-        }
+        // Sets current player to human
+        currentPlayer = 0;
 
         // Initalizes tiles to be added to hands
         tiles = new ArrayList<>();
@@ -89,13 +80,9 @@ public class DominoGameState extends GameState {
     public DominoGameState(DominoGameState other) {
         //copy the board
         board = other.getBoard();
+
         //copy the hands over
         this.hands = other.hands;
-        //copy the scores over
-        this.scores = new int[4];
-//        for(int i = 0; i < 4; i++) {
-//            this.scores[i] = other.scores[i];
-//        }
 
         //current player
         currentPlayer = other.currentPlayer;
@@ -120,26 +107,6 @@ public class DominoGameState extends GameState {
     */
     public ArrayList<Domino> getPlayerHand(int playerIndx) {
         return hands.get(playerIndx);
-    }
-
-    //Gets player 1 domino hand
-    public ArrayList<Domino> getPLayer1Hand() {
-        return hands.get(0);
-    }
-
-    //Sets player 2 domino hand
-    public ArrayList<Domino> getPLayer2Hand() {
-        return hands.get(1);
-    }
-
-    //Gets player 3 domino hand
-    public ArrayList<Domino> getPLayer3Hand() {
-        return hands.get(2);
-    }
-
-    //Sets player 4 domino hand
-    public ArrayList<Domino> getPLayer4Hand() {
-        return hands.get(3);
     }
 
     public void setPlayerHand(ArrayList<Domino> playerHand, int playerIndx) {
@@ -174,46 +141,6 @@ public class DominoGameState extends GameState {
 
     //Calls the current/players turn
     public int getCurrentPlayer() { return currentPlayer; }
-
-    //Gets player 1 score
-    public int getPlayer1Score() {
-        return scores[0];
-    }
-
-    //Sets player 1 score
-    public void setPlayer1Score(int playerScore) {
-        scores[0] = playerScore;
-    }
-
-    //Gets player 2 score
-    public int getPlayer2Score() {
-        return scores[1];
-    }
-
-    //Sets the player 2 score
-    public void setPlayer2Score(int playerScore) {
-        scores[1] = playerScore;
-    }
-
-    //Gets player 3 score
-    public int getPlayer3Score() {
-        return scores[2];
-    }
-
-    //Sets the player 3 score
-    public void setPlayer3Score(int playerScore) {
-        scores[2] = playerScore;
-    }
-
-    //Gets player 4 score
-    public int getPlayer4Score() {
-        return scores[3];
-    }
-
-    //Sets the player 4 score
-    public void setPlayer4Score(int playerScore) {
-        scores[3] = playerScore;
-    }
 
     public void removeDominoFromHand(int playerIndx, int domino_clicked) {
         getPlayerHand(playerIndx).get(domino_clicked).setEnd1(-1);
@@ -262,7 +189,6 @@ public class DominoGameState extends GameState {
             return emptyTotal == total - 1;
         }
         return emptyTotal >= total - 2;
-    }
-
+    }//isValid
 
 }
