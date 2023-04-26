@@ -7,6 +7,8 @@ import com.example.game.GamePlayer;
 import com.example.game.LocalGame;
 import com.example.game.actionMsg.GameAction;
 
+import java.util.ArrayList;
+
 /**Domino Local Game
  *
  *Class DominoLocalGame controls the play of the game
@@ -49,12 +51,15 @@ public class DominoLocalGame extends LocalGame {
     }//tells a player if it is they're turn
 
     @Override
-    protected String checkIfGameOver() {
-//        if (dgs.getPlayerHand(dgs.getCurrentPlayer) == null){
-//            return "Congrats! You win";
-//        }
+    protected String checkIfGameOver(){
+        for(int i = 0; i < dgs.getPlayerHand(dgs.getCurrentPlayer()).size();i++){
+            ArrayList<Domino> playerHand = dgs.getPlayerHand(i);
+            if(playerHand.size() == -1){
+                return "Player" +i+ " wins!";
+            }
+        }
         return null;
-    }//returns of the game has been won
+    }
 
     @Override
     protected boolean makeMove(GameAction action) {
