@@ -131,6 +131,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 if (board[i][j] != EMPTY) {
                     int val = board[i][j];
                     boardButtons[i][j].setText(""+val);
+                    boardButtons[i][j].getBackground().setAlpha(255);
                 }
             }
         }// Update board
@@ -233,6 +234,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 boardButtons[i][j].setTag(i+"_"+j) ;
 
                 tableRow.addView(boardButtons[i][j]);
+                boardButtons[i][j].getBackground().setAlpha(30);
 
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -242,30 +244,53 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
                         Log.d("BoardClicked", row + " " + col);
 
+
                         if (dominoClicked != -1) {
                             switch (rotationNum) {
                                 case 1:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeUP = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.UP(row), col);
                                     DominoHumanPlayer.this.game.sendAction(placeUP);
+
+                                    // Display message to signify
                                     toast("Domino Placed");
+
+                                    // Set a new transparency for a button to max
+                                    boardButtons[row][col].getBackground().setAlpha(255);
+                                    boardButtons[rd.UP(row)][col].getBackground().setAlpha(255);
+
                                     break;
                                 case 2:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeRIGHT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.RIGHT(col));
                                     DominoHumanPlayer.this.game.sendAction(placeRIGHT);
+
                                     toast("Domino Placed");
+
+                                    boardButtons[row][col].getBackground().setAlpha(255);
+                                    boardButtons[row][rd.RIGHT(col)].getBackground().setAlpha(255);
+
                                     break;
                                 case 3:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeDOWN = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.DOWN(row), col);
                                     DominoHumanPlayer.this.game.sendAction(placeDOWN);
                                     toast("Domino Placed");
+
+                                    boardButtons[row][col].getBackground().setAlpha(255);
+                                    boardButtons[rd.DOWN(row)][col].getBackground().setAlpha(255);
+
+                                    break;
                                 case 4:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeLEFT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.LEFT(col));
                                     DominoHumanPlayer.this.game.sendAction(placeLEFT);
                                     toast("Domino Placed");
+
+                                    boardButtons[row][col].getBackground().setAlpha(255);
+                                    boardButtons[row][rd.LEFT(col)].getBackground().setAlpha(255);
+
+                                    break;
                             }
                         } else {
                             flash(Color.RED, 200);

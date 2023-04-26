@@ -29,13 +29,14 @@ public class DominoComputerPlayer extends GameComputerPlayer {
         if (dgs.getCurrentPlayer() != playerNum) {
             return;
         } //return
+
         Random rnd = new Random();
         if (rnd.nextBoolean()) {
-            sleep(3000);
+            sleep(5000);
             DominoPassAction dpsa = new DominoPassAction(this);
             this.game.sendAction(dpsa);
         } else {
-            sleep(3000);
+            sleep(5000);
             int[] stuff = aiMove(board, hand);
             DominoPlaceAction dpa = new DominoPlaceAction(this, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
             this.game.sendAction(dpa);
