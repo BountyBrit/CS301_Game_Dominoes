@@ -257,34 +257,21 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeUP = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.UP(row), col);
                                     DominoHumanPlayer.this.game.sendAction(placeUP);
-
-                                    // Display message to signify
-                                    toast("Domino Placed");
-
                                     break;
                                 case 2:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeRIGHT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.RIGHT(col));
                                     DominoHumanPlayer.this.game.sendAction(placeRIGHT);
-
-                                    toast("Domino Placed");
-
                                     break;
                                 case 3:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeDOWN = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.DOWN(row), col);
                                     DominoHumanPlayer.this.game.sendAction(placeDOWN);
-
-                                    toast("Domino Placed");
-
                                     break;
                                 case 4:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeLEFT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.LEFT(col));
                                     DominoHumanPlayer.this.game.sendAction(placeLEFT);
-
-                                    toast("Domino Placed");
-
                                     break;
                             }
                         } else {
