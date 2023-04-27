@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private Button    handButton7;
     private Button    passButton;
     private Button    rotButton;
-    Button[][] boardButtons = new Button[10][10];
+    ImageButton[][] boardButtons = new ImageButton[10][10];
     private int EMPTY = -1;
 
     private int dominoClicked = -1;
@@ -130,8 +131,31 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
             for (int j = 0; j < board.length; j++) {
                 if (board[i][j] != EMPTY) {
                     int val = board[i][j];
-                    boardButtons[i][j].setText(""+val);
-                    boardButtons[i][j].getBackground().setAlpha(255);
+//                    boardButtons[i][j].setText(""+val);
+                    switch (val) {
+                        case 0:
+                            boardButtons[i][j].setImageResource(R.drawable.domino0);
+                            break;
+                        case 1:
+                            boardButtons[i][j].setImageResource(R.drawable.domino1);
+                            break;
+                        case 2:
+                            boardButtons[i][j].setImageResource(R.drawable.domino2);
+                            break;
+                        case 3:
+                            boardButtons[i][j].setImageResource(R.drawable.domino3);
+                            break;
+                        case 4:
+                            boardButtons[i][j].setImageResource(R.drawable.domino4);
+                            break;
+                        case 5:
+                            boardButtons[i][j].setImageResource(R.drawable.domino5);
+                            break;
+                        case 6:
+                            boardButtons[i][j].setImageResource(R.drawable.domino6);
+                            break;
+                    }
+//                    boardButtons[i][j].getBackground().setAlpha(255);
                 }
             }
         }// Update board
@@ -202,18 +226,21 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         this.handButton6 = (Button)activity.findViewById(R.id.handButton6);
         this.handButton7 = (Button)activity.findViewById(R.id.handButton7);
 
-        // Creates and adds buttons to the array boardButtons,
-        // then
+        // Creates and adds ImageButtons to the array boardButtons,
+        // then sets an OnClickListener to wait to place an action
         TableLayout tableLayout = activity.findViewById(R.id.table_layout);
 
         for (int i = 0; i < boardButtons.length; i++) {
             TableRow tableRow = new TableRow(getTopView().getContext());
             for (int j = 0; j < boardButtons.length; j++) {
-                boardButtons[i][j] = new Button(getTopView().getContext());
-                boardButtons[i][j].setTag(i+"_"+j) ;
+                boardButtons[i][j] = new ImageButton(getTopView().getContext());
+                boardButtons[i][j].setTag(i+"_"+j);
 
                 tableRow.addView(boardButtons[i][j]);
                 boardButtons[i][j].getBackground().setAlpha(20);
+                boardButtons[i][j].getLayoutParams().width=100;
+                boardButtons[i][j].getLayoutParams().height=80;
+
 
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -234,10 +261,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                                     // Display message to signify
                                     toast("Domino Placed");
 
-                                    // Set a new transparency for a button to max
-                                    boardButtons[row][col].getBackground().setAlpha(255);
-                                    boardButtons[rd.UP(row)][col].getBackground().setAlpha(255);
-
                                     break;
                                 case 2:
                                     // Create and send DominoPlaceAction with user rotation
@@ -246,28 +269,21 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
                                     toast("Domino Placed");
 
-                                    boardButtons[row][col].getBackground().setAlpha(255);
-                                    boardButtons[row][rd.RIGHT(col)].getBackground().setAlpha(255);
-
                                     break;
                                 case 3:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeDOWN = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.DOWN(row), col);
                                     DominoHumanPlayer.this.game.sendAction(placeDOWN);
-                                    toast("Domino Placed");
 
-                                    boardButtons[row][col].getBackground().setAlpha(255);
-                                    boardButtons[rd.DOWN(row)][col].getBackground().setAlpha(255);
+                                    toast("Domino Placed");
 
                                     break;
                                 case 4:
                                     // Create and send DominoPlaceAction with user rotation
                                     DominoPlaceAction placeLEFT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.LEFT(col));
                                     DominoHumanPlayer.this.game.sendAction(placeLEFT);
-                                    toast("Domino Placed");
 
-                                    boardButtons[row][col].getBackground().setAlpha(255);
-                                    boardButtons[row][rd.LEFT(col)].getBackground().setAlpha(255);
+                                    toast("Domino Placed");
 
                                     break;
                             }
