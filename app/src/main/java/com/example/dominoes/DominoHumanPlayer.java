@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -27,8 +28,14 @@ import java.util.ArrayList;
 public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     /* Instance Variables
-     * These variables will reference widgets that will be modified during play */
-    //private player player_1;
+     *
+     * These variables will reference widgets that will be modified during play
+     *
+     */
+    private GameMainActivity myActivity;
+    private int[][] board;
+    private ArrayList<Domino> hand;
+    private ArrayList<Button> handButtons = new ArrayList<>();
     private Button    handButton1;
     private Button    handButton2;
     private Button    handButton3;
@@ -37,26 +44,24 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private Button    handButton6;
     private Button    handButton7;
     private Button    passButton;
-
-    private GameMainActivity myActivity;
-
-    private int[][] board;
-    private ArrayList<Domino> hand;
-    private ArrayList<Button> handButtons = new ArrayList<>();
-
-    Button[][] boardButtons = new Button[10][10];
-
-    private boolean boardButtonClicked = false;
-
-    private boolean turn = true;
-
-    private int row = -1;
-    private int col = -1;
-
+    private Button    rotButton;
+    ImageButton[][] boardButtons = new ImageButton[10][10];
     private int EMPTY = -1;
 
     private int dominoClicked = -1;
 
+    //Rotation varibales
+    private int row = -1;
+    private int col = -1;
+    private int rotationNum =1;
+    private int DominoRotation = col+1;
+    RotateDomino rd = new RotateDomino();
+
+
+
+    /* Main methods of the DominoHumanPlayer Class
+     *
+     */
     public void addHandButtons() {
         handButtons.add(handButton1);
         handButtons.add(handButton2);
@@ -126,55 +131,79 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
             for (int j = 0; j < board.length; j++) {
                 if (board[i][j] != EMPTY) {
                     int val = board[i][j];
-                    boardButtons[i][j].setText(""+val);
+//                    boardButtons[i][j].setText(""+val);
+                    switch (val) {
+                        case 0:
+                            boardButtons[i][j].setImageResource(R.drawable.domino0);
+                            break;
+                        case 1:
+                            boardButtons[i][j].setImageResource(R.drawable.domino1);
+                            break;
+                        case 2:
+                            boardButtons[i][j].setImageResource(R.drawable.domino2);
+                            break;
+                        case 3:
+                            boardButtons[i][j].setImageResource(R.drawable.domino3);
+                            break;
+                        case 4:
+                            boardButtons[i][j].setImageResource(R.drawable.domino4);
+                            break;
+                        case 5:
+                            boardButtons[i][j].setImageResource(R.drawable.domino5);
+                            break;
+                        case 6:
+                            boardButtons[i][j].setImageResource(R.drawable.domino6);
+                            break;
+                    }
+//                    boardButtons[i][j].getBackground().setAlpha(255);
                 }
             }
         }// Update board
 
+        // Toast user to show whose turn it is
         int currPlayer = dgs.getCurrentPlayer();
+        toast(allPlayerNames[currPlayer] + "'s turn");
 
-        if (currPlayer == 0) {
-            toast("Your turn");
-        } else if (currPlayer == 1) {
-            toast("Player 2's turn");
-        } else if (currPlayer == 2) {
-            toast("Player 3's turn");
-        } else if (currPlayer == 3) {
-            toast("Player 4's turn");
-        }
-
-
-    }
-
-    public ArrayList<Domino> getHand() {
-        return hand;
-    }//returns the hand of the current player
-
-    public void removeDominoFromHand(Domino domino) {
-        hand.remove(domino);
-    }//removes a domino from the current players hand
-
-    public boolean hasDomino() {
-        Domino domino = null;
-        return hand.contains(null);
-    }//returns whether this player has dominos
-
-    public int getHandSize() {
-        return hand.size();
-    }//returns the size of this player's hand
+    }//receiveInfo
 
     @Override
     public void onClick(View button) {
-        while (turn) {
-            if (button.getId() == R.id.pass_button) {
+        switch (button.getId()) {
+            case R.id.pass_button: // the pass button is clicked, then the turn is passed
                 DominoPassAction pass = new DominoPassAction(this);
                 this.game.sendAction(pass);
-                button.invalidate();
-                turn = false;
                 toast("Turn Passed");
-            }//if the button clicked passes then the turn is passed
+                button.invalidate();
+                break;
+            case R.id.rotate_button:
+                // Checks rotationNum
+                if // if rotationNum is 4(LEFT)
+                (rotationNum == 4) {
+                    rotationNum = 1;//reset back to 1(UP)
+                } //Otherwise, keeping increasing rotationNum
+                else {
+                    rotationNum++;
+                }
+
+                // Sends message to user to indicate rotation of domino
+                // then invalidates the button to be pressed again
+                if (rotationNum == 1) {
+                    toast("Domino rotated UP ");
+                    button.invalidate();
+                } else if (rotationNum == 2) {
+                    toast("Domino rotated RIGHT");
+                    button.invalidate();
+                } else if (rotationNum == 3) {
+                    toast("Domino rotated DOWN");
+                    button.invalidate();
+                } else if (rotationNum == 4) {
+                    toast("Domino rotated LEFT");
+                    button.invalidate();
+                }
+                break;
         }
-    }
+
+    }//onClick
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
 
@@ -188,6 +217,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
         // Initialize the widget reference member variables
         this.passButton  = (Button)activity.findViewById(R.id.pass_button);
+        this.rotButton   = (Button)activity.findViewById(R.id.rotate_button);
         this.handButton1 = (Button)activity.findViewById(R.id.handButton1);
         this.handButton2 = (Button)activity.findViewById(R.id.handButton2);
         this.handButton3 = (Button)activity.findViewById(R.id.handButton3);
@@ -196,30 +226,54 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         this.handButton6 = (Button)activity.findViewById(R.id.handButton6);
         this.handButton7 = (Button)activity.findViewById(R.id.handButton7);
 
-        // Creates and adds buttons to the array boardButtons,
-        // then
+        // Creates and adds ImageButtons to the array boardButtons,
+        // then sets an OnClickListener to wait to place an action
         TableLayout tableLayout = activity.findViewById(R.id.table_layout);
 
         for (int i = 0; i < boardButtons.length; i++) {
             TableRow tableRow = new TableRow(getTopView().getContext());
             for (int j = 0; j < boardButtons.length; j++) {
-                boardButtons[i][j] = new Button(getTopView().getContext());
-                boardButtons[i][j].setTag(i+"_"+j) ;
+                boardButtons[i][j] = new ImageButton(getTopView().getContext());
+                boardButtons[i][j].setTag(i+"_"+j);
 
                 tableRow.addView(boardButtons[i][j]);
+                boardButtons[i][j].getBackground().setAlpha(20);
+                boardButtons[i][j].getLayoutParams().width=100;
+                boardButtons[i][j].getLayoutParams().height=80;
+
 
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View btn) {
-                        row = getRowFromTag((String)btn.getTag());
+                        row = getRowFromTag((String) btn.getTag());
                         col = getColFromTag((String) btn.getTag());
 
                         Log.d("BoardClicked", row + " " + col);
 
+
                         if (dominoClicked != -1) {
-                            DominoPlaceAction place = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, (col + 1));
-                            DominoHumanPlayer.this.game.sendAction(place);
-                            toast("Domino Placed");
+                            switch (rotationNum) {
+                                case 1:
+                                    // Create and send DominoPlaceAction with user rotation
+                                    DominoPlaceAction placeUP = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.UP(row), col);
+                                    DominoHumanPlayer.this.game.sendAction(placeUP);
+                                    break;
+                                case 2:
+                                    // Create and send DominoPlaceAction with user rotation
+                                    DominoPlaceAction placeRIGHT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.RIGHT(col));
+                                    DominoHumanPlayer.this.game.sendAction(placeRIGHT);
+                                    break;
+                                case 3:
+                                    // Create and send DominoPlaceAction with user rotation
+                                    DominoPlaceAction placeDOWN = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, rd.DOWN(row), col);
+                                    DominoHumanPlayer.this.game.sendAction(placeDOWN);
+                                    break;
+                                case 4:
+                                    // Create and send DominoPlaceAction with user rotation
+                                    DominoPlaceAction placeLEFT = new DominoPlaceAction(DominoHumanPlayer.this, dominoClicked, row, col, row, rd.LEFT(col));
+                                    DominoHumanPlayer.this.game.sendAction(placeLEFT);
+                                    break;
+                            }
                         } else {
                             flash(Color.RED, 200);
                             toast("No Domino Clicked. Please select a Domino");
@@ -232,6 +286,8 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
         //Listen for button presses
         passButton.setOnClickListener(this);
+        rotButton.setOnClickListener(this);
+
     }//setAsGui
 
     private int getRowFromTag(String tag) {
