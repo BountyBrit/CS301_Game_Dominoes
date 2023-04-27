@@ -7,9 +7,9 @@ import com.example.game.actionMsg.GameAction;
  *
  *Constructor for GameAction
  *
- * @Author Alejandro Varela
- * @Author Brit Dannen
- * @Author Jackson Smith
+ * @author Alejandro Varela
+ * @author Brit Dannen
+ * @author Jackson Smith
  */
 public class DominoPlaceAction extends GameAction {
 
@@ -20,12 +20,13 @@ public class DominoPlaceAction extends GameAction {
     private int row_2;
     private int col_2;
 
+
     /** DominoPlaceAction
      *
      */
-    public DominoPlaceAction(GamePlayer player, int dominoClicked, int row1, int col1, int row2, int col2 ) {
+    public DominoPlaceAction(GamePlayer player, int dominoIndex, int row1, int col1, int row2, int col2) {
         super(player);
-        this.Domino_Clicked = dominoClicked;
+        this.Domino_Clicked = dominoIndex;
         this.row_1 = row1;
         this.col_1 = col1;
         this.row_2 = row2;

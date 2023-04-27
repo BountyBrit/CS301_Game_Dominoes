@@ -2,7 +2,6 @@ package com.example.dominoes;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -162,33 +161,102 @@ public class DominoGameState extends GameState {
 //        }
     }//placeDomino
 
-    public boolean isValid(int row, int col, int val, int side) {
+    public boolean isValid(int row, int col, int val) {
         int empty = 0;
-        for(int i = 0; i < 10; i++) {
-            for( int j = 0; j < 10; j++) {
-                if(board[i][j] == EMPTY) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (board[i][j] == EMPTY) {
                     empty++;
                 }
             }
         }
-        if(empty == 100) {return true;}
+        if (empty == 100) {
+            return true;
+        }
         //for the first turn always return true
+        int side = 2;
+        for (int i = row - 1; i < row + 2; i++) {
+            for (int j = col - 1; j < col + 2; j++) {
+                if(!inBounds(i, j)){continue;}
+                if(i == row && j == col) {
+                    continue;
+                }
+                if(board[i][j] != EMPTY) {
+                    side = 1;
+                    break;
+                }
+            }
+        }//finds the side of the domino currently on
 
-        int emptyTotal = 0;
-        int total = 0;
-        for(int i = row - 1; i < row + 2; i++) {
-            for(int j = col - 1; j < col + 2; j++) {
-                if(i > 9 || j > 9 || i < 0 || j < 0) {continue;}
-                //if(board[i-1][j-1] != EMPTY || board[i+1][j-1] != EMPTY || board[i-1][j+1] != EMPTY || board[i+1][j+1] != EMPTY) {return false;}
-                total++;
-                if(board[i][j] == EMPTY) {emptyTotal++;}
-                if(board[i][j] != val && board[i][j] != EMPTY ){return false;}
+        int connected = connect(row,col,val);
+        for (int i = row - 1; i < row + 2; i++) {
+            for (int j = col - 1; j < col + 2; j++) {
+                if(!inBounds(i, j)){continue;}
+                if(side == 2) {
+                    if(board[i][j] != EMPTY) {
+                        return false;
+                    }
+                }
+                else if(side == 1) {
+                    int total = 0;
+                    if(connected == 0) {return false;}
+                    else if(connected == 1) {
+                        if(board[i + 1][j - 1] != EMPTY || board[i + 1][j + 1] != EMPTY) {
+                            return false;
+                        }
+                    }
+                    else if(connected == 2) {
+                        if(board[i + 1][j - 1] != EMPTY || board[i - 1][j - 1] != EMPTY) {
+                            return false;
+                        }
+                    }
+                    else if(connected == 3) {
+                        if(board[i - 1][j - 1] != EMPTY || board[i - 1][j + 1] != EMPTY) {
+                            return false;
+                        }
+                    }
+                    else if(connected == 4) {
+                        if(board[i + 1][j + 1] != EMPTY || board[i - 1][j + 1] != EMPTY) {
+                            return false;
+                        }
+                    }
+                    else if(i == row - 1 || i == row + 1 || j == col - 1 || j == col + 1) {
+                        if(board[row][col] == val) {
+                            if(total > 1){return false;}
+                            total++;
+                        }
+                        else if(board[row][col] != val) {return false;}
+                    }
+                }
             }
         }
-        if(side == 1) {
-            return emptyTotal == total - 1;
-        }
-        return emptyTotal >= total - 2;
-    }//isValid
+        return true;
+    }
 
+    private int connect(int row, int col, int val) {
+        for (int i = row - 1; i < row + 2; i++) {
+            for (int j = col - 1; j < col + 2; j++) {
+                if(inBounds(i-1, j)){
+                    if(board[i-1][j] == val) {return 1;}
+                }
+                if(inBounds(i+1, j)){
+                    if(board[i+1][j] == val) {return 1;}
+                }
+                if(inBounds(i, j+1)){
+                    if(board[i][j+1] == val) {return 1;}
+                }
+                if(inBounds(i, j-1)){
+                    if(board[i][j-1] == val) {return 1;}
+                }
+            }
+        }
+        return 0;
+    }
+
+    private boolean inBounds(int row,int col) {
+        if(row > -1 && col > -1 && row < 10 && col < 10) {
+            return true;
+        }
+        return false;
+    }
 }

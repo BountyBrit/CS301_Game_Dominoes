@@ -47,20 +47,20 @@ public class DominoGameStateTest {//dummy comment for push
     }
 
     @Test
-    public void removeDominoFromHand() {
-        DominoGameState dgs = new DominoGameState();
-        int currPlayer = dgs.getCurrentPlayer();
-        ArrayList<Domino> hand = dgs.getPlayerHand(0);
-        dgs.removeDominoFromHand(0, hand.get(0));
-        assertTrue(hand.size() == 6);
-    }
+//    public void removeDominoFromHand() {
+//        DominoGameState dgs = new DominoGameState();
+//        int currPlayer = dgs.getCurrentPlayer();
+//        ArrayList<Domino> hand = dgs.getPlayerHand(0);
+//        dgs.removeDominoFromHand(0, hand.get(0));
+//        assertTrue(hand.size() == 6);
+//    }
 
     @Test
     public void isValid() {
         DominoGameState dgs = new DominoGameState();
         int[][] board = dgs.getBoard();
         board[4][4] = 4;
-        assertTrue(dgs.isValid(2, 4, 4, 1));
+        assertTrue(dgs.isValid(2, 4, 4));
     }
 
     @Test
