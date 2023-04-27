@@ -22,6 +22,12 @@ public class DominoPlaceAction extends GameAction {
 
     /** DominoPlaceAction
      *
+     * @param player
+     * @param dominoClicked
+     * @param row1
+     * @param col1
+     * @param row2
+     * @param col2
      */
     public DominoPlaceAction(GamePlayer player, int dominoClicked, int row1, int col1, int row2, int col2 ) {
         super(player);
@@ -30,7 +36,9 @@ public class DominoPlaceAction extends GameAction {
         this.col_1 = col1;
         this.row_2 = row2;
         this.col_2 = col2;
-    }
+    }//DominoPlaceAction
+
+    // Accessors and mutators for the action
     public int getRow_1() {
         return row_1;
     }

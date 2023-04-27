@@ -136,37 +136,11 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
             }
         }// Update board
 
+        // Toast user to show whose turn it is
         int currPlayer = dgs.getCurrentPlayer();
+        toast(allPlayerNames[currPlayer] + "'s turn");
 
-        if (currPlayer == 0) {
-            toast("Your turn");
-        } else if (currPlayer == 1) {
-            toast("Player 2's turn");
-        } else if (currPlayer == 2) {
-            toast("Player 3's turn");
-        } else if (currPlayer == 3) {
-            toast("Player 4's turn");
-        }
-
-
-    }
-
-    public ArrayList<Domino> getHand() {
-        return hand;
-    }//returns the hand of the current player
-
-    public void removeDominoFromHand(Domino domino) {
-        hand.remove(domino);
-    }//removes a domino from the current players hand
-
-    public boolean hasDomino() {
-        Domino domino = null;
-        return hand.contains(null);
-    }//returns whether this player has dominos
-
-    public int getHandSize() {
-        return hand.size();
-    }//returns the size of this player's hand
+    }//receiveInfo
 
     @Override
     public void onClick(View button) {
@@ -178,13 +152,17 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 button.invalidate();
                 break;
             case R.id.rotate_button:
-                // Checks if num is 4, reset to 1
-                if (rotationNum == 4) {
-                    rotationNum = 1;
-                } else {
+                // Checks rotationNum
+                if // if rotationNum is 4(LEFT)
+                (rotationNum == 4) {
+                    rotationNum = 1;//reset back to 1(UP)
+                } //Otherwise, keeping increasing rotationNum
+                else {
                     rotationNum++;
                 }
 
+                // Sends message to user to indicate rotation of domino
+                // then invalidates the button to be pressed again
                 if (rotationNum == 1) {
                     toast("Domino rotated UP ");
                     button.invalidate();
@@ -198,9 +176,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                     toast("Domino rotated LEFT");
                     button.invalidate();
                 }
+                break;
         }
 
-    }
+    }//onClick
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
 
@@ -234,7 +213,7 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
                 boardButtons[i][j].setTag(i+"_"+j) ;
 
                 tableRow.addView(boardButtons[i][j]);
-                boardButtons[i][j].getBackground().setAlpha(30);
+                boardButtons[i][j].getBackground().setAlpha(20);
 
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -109,6 +109,8 @@ public class DominoGameState extends GameState {
         return hands.get(playerIndx);
     }
 
+    public Hashtable<Integer, ArrayList<Domino>> getHand() {return hands;}
+
     public void setPlayerHand(ArrayList<Domino> playerHand, int playerIndx) {
         hands.remove(playerIndx);
         hands.put(playerIndx, playerHand);

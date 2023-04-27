@@ -12,7 +12,13 @@ import com.example.game.actionMsg.GameAction;
  * @Jackson Smith
  */
 public class DominoPassAction extends GameAction {
+
+    /** DominoPassAction
+     *
+     * @param player
+     */
     public DominoPassAction(GamePlayer player) {
         super(player);
-    }
+    }//DominoPassAction
+
 }

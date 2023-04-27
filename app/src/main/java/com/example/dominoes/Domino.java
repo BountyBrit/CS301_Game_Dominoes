@@ -45,7 +45,7 @@ public class Domino {
         this.end2 = end2;
     }
 
-    /**
+    /** toString
      * Returns end2 and end1 has a string.
      *
      * @return
