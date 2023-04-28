@@ -6,6 +6,15 @@ import com.example.game.infoMsg.GameInfo;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ *
+ * Smart AI for Domino
+ *
+ * @Author Brit Dannen
+ * @Author Alejandro Varela
+ * @Author Jackson Smith
+ */
+
 public class SmartComputerPlayer extends GameComputerPlayer {
 
     public SmartComputerPlayer(String initName) {
