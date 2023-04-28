@@ -55,7 +55,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
                 for(int x = 0; x < hand.size();x++) {
                     side1 = hand.get(x).getEnd1();
                     side2 = hand.get(x).getEnd2();
-                    if(dgs.isValid(i,j,side1,1)) {
+                    if(dgs.isValid(i,j,side1)) {
                         location[0] = i;
                         location[1] = j;
                         location[4] = x;
@@ -69,7 +69,7 @@ public class DominoComputerPlayer extends GameComputerPlayer {
         }//if location is EMPTY then there is no place for the domino to get placed so it returns an empty array that will eventually pass the turn
         for(int i = location[0] - 1; i < location[0] + 2; i++) {
             for(int j = location[1] - 1; i < location[1] + 2; j++) {
-                if(dgs.isValid(i, j, side2, 2)) {
+                if(dgs.isValid(i, j, side2)) {
                     location[2] = i;
                     location[3] = j;
                     break;
