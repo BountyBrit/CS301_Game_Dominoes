@@ -286,6 +286,7 @@ public abstract class LocalGame implements Game, Tickable {
 		String overMsg = checkIfGameOver();
 		if (overMsg != null) {
 			finishUpGame(overMsg);
+
 		}
 	}
 
@@ -330,6 +331,7 @@ public abstract class LocalGame implements Game, Tickable {
 		for (GamePlayer p : players) {
 			p.sendInfo(new GameOverInfo(msg));
 		}
+
 	}
 	
 	/**
