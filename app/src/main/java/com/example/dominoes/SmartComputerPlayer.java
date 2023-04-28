@@ -34,11 +34,11 @@ public class SmartComputerPlayer extends GameComputerPlayer {
 
         Random rnd = new Random();
         if (rnd.nextBoolean()) {
-            sleep(500);
+            sleep(50);
             DominoPassAction dpsa = new DominoPassAction(this);
             this.game.sendAction(dpsa);
         } else {
-            sleep(500);
+            sleep(50);
             int[] stuff = aiMove(board, hand);
             DominoPlaceAction dpa = new DominoPlaceAction(this, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
             this.game.sendAction(dpa);

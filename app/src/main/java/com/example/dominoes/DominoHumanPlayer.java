@@ -77,7 +77,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         handButtons.add(handButton7);
     }//adds the buttons in the hands to the hashtable that holds them at the index of their value
 
-
+    /**
+     *
+     * @param message
+     */
     private void toast(CharSequence message) {
         Context context = myActivity.getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
@@ -86,11 +89,20 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         toast.show();
     }
 
+    /**
+     *
+     * @param name
+     */
     public DominoHumanPlayer(String name) {
         super(name);
         this.hand = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param info
+     * 		the message
+     */
     @Override
     public void receiveInfo(GameInfo info) {
 
@@ -170,6 +182,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     }//receiveInfo
 
+    /**
+     *
+     * @param button
+     */
     @Override
     public void onClick(View button) {
         switch (button.getId()) {
@@ -211,6 +227,11 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
 
+    /**
+     *
+     *
+     * @param activity
+     */
     @Override
     public void setAsGui(GameMainActivity activity) {
         // Remember the activity
@@ -298,11 +319,22 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     }//setAsGui
 
+    /**
+     *
+     * @param tag
+     * @return
+     */
     private int getRowFromTag(String tag) {
 
         String[] rowAndColumn = tag.split("_");
         return Integer.parseInt(rowAndColumn[0]);
     }
+
+    /**
+     *
+     * @param tag
+     * @return
+     */
     private int getColFromTag(String tag) {
         String[] rowAndColumn = tag.split("_");
         return Integer.parseInt(rowAndColumn[1]);

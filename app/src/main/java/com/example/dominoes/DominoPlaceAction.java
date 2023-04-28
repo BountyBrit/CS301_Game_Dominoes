@@ -24,7 +24,7 @@ public class DominoPlaceAction extends GameAction {
     /** DominoPlaceAction
      *
      * @param player
-     * @param dominoClicked
+     * @param dominoIndex
      * @param row1
      * @param col1
      * @param row2
