@@ -1,6 +1,7 @@
 package com.example.dominoes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.example.game.GameHumanPlayer;
 import com.example.game.GameMainActivity;
 import com.example.game.infoMsg.GameInfo;
+import com.example.game.util.MessageBox;
 
 import java.util.ArrayList;
 
@@ -56,6 +58,9 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private int rotationNum =1;
     private int DominoRotation = col+1;
     RotateDomino rd = new RotateDomino();
+
+    private String MenuStr = "Menu";
+    private String QuitStr = "Quit Game";
 
 
 
@@ -214,7 +219,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         // Load the layout resource for our GUI
         activity.setContentView(R.layout.domino_layout);
 
-
         // Initialize the widget reference member variables
         this.passButton  = (Button)activity.findViewById(R.id.pass_button);
         this.rotButton   = (Button)activity.findViewById(R.id.rotate_button);
@@ -302,6 +306,30 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private int getColFromTag(String tag) {
         String[] rowAndColumn = tag.split("_");
         return Integer.parseInt(rowAndColumn[1]);
+    }
+
+    /**
+     * callback method--called when we are notified that the game is over
+     *
+     * @param msg
+     * 		the "game over" message sent by the game
+     */
+    @Override
+    protected void gameIsOver(String msg) {
+        // the default behavior is to put a pop-up for the user to see that tells
+        // the game's result and offers two options: Quit or Return to Menu
+		MessageBox.popUpChoice(msg, QuitStr, MenuStr, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface di, int val) {
+                // if the user says that they want to quit,
+                // exit the application
+                System.exit(0);
+            }}, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface di, int val) {
+                // if the user says that they want to return to the menu,
+                // "restart" the application
+                myActivity.recreate();
+            }}, myActivity);
+
     }
 }
 
