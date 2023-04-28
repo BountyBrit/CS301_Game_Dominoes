@@ -72,8 +72,8 @@ public class DominoLocalGame extends LocalGame {
      * @return
      */
     @Override
-    protected String checkIfGameOver(){
-        for (int i = 0; i < (dgs.getHand().size()); i++){
+    protected String checkIfGameOver() {
+        for (int i = 0; i < (dgs.getHand().size()); i++) {
             ArrayList<Domino> playerHand = dgs.getPlayerHand(i);
             int count = 0;
             for (int j = 0; j < (playerHand.size()); j++) {
