@@ -51,15 +51,16 @@ public class DominoMainActivity extends GameMainActivity{
         // Define the allowed player types
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
-        // Domino has two player types:  human and computer
+        // Domino has three player types:  human player, computer, and smart computer player
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
                 return new DominoHumanPlayer(name);
             }});
         playerTypes.add(new GamePlayerType("Computer Player") {
-            public GamePlayer createPlayer(String name) {
-                return new DominoComputerPlayer(name);
-            }});
+            public GamePlayer createPlayer(String name) { return new DominoComputerPlayer(name); }});
+        playerTypes.add(new GamePlayerType("Smart Computer Player"){
+            public GamePlayer createPlayer(String name) { return new DominoComputerPlayer(name); }});
+
 
         // Create a game configuration class for Domino:
         GameConfig defaultConfig = new GameConfig(playerTypes, 1, 4, "Domino", PORT_NUMBER);

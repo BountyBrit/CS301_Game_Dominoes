@@ -6,20 +6,13 @@ import com.example.game.infoMsg.GameInfo;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- *
- * AI for Domino's
- *
- * @author Alejandro Varela
- * @author Brit Dannen
- * @author Jackson Smith
- *
- */
-public class DominoComputerPlayer extends GameComputerPlayer {
+public class SmartComputerPlayer extends GameComputerPlayer {
+
+    public SmartComputerPlayer(String initName) {
+        super(initName);
+    }
     DominoGameState dgs;
     private final int EMPTY = -1;
-    public DominoComputerPlayer(String initName) {super(initName);}
-
     @Override
     protected void receiveInfo(GameInfo info) {
         dgs = new DominoGameState((DominoGameState)info);
@@ -32,16 +25,15 @@ public class DominoComputerPlayer extends GameComputerPlayer {
 
         Random rnd = new Random();
         if (rnd.nextBoolean()) {
-            sleep(5000);
+            sleep(500);
             DominoPassAction dpsa = new DominoPassAction(this);
             this.game.sendAction(dpsa);
+        } else {
+            sleep(500);
+            int[] stuff = aiMove(board, hand);
+            DominoPlaceAction dpa = new DominoPlaceAction(this, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
+            this.game.sendAction(dpa);
         }
-//        else {
-//            sleep(5000);
-//            int[] stuff = aiMove(board, hand);
-//            DominoPlaceAction dpa = new DominoPlaceAction(this, stuff[4], stuff[0], stuff[1], stuff[2], stuff[3]);
-//            this.game.sendAction(dpa);
-//        }
     }
 
 
