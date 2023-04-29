@@ -59,14 +59,16 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     private int DominoRotation = col+1;
     RotateDomino rd = new RotateDomino();
 
+    // Pop-up message variables
     private String MenuStr = "Menu";
     private String QuitStr = "Quit Game";
 
 
 
-    /* Main methods of the DominoHumanPlayer Class
-     *
-     */
+    /* Main methods of the DominoHumanPlayer Class */
+
+    // Adds the buttons in the hands to the hashtable
+    // that holds them at the index of their value
     public void addHandButtons() {
         handButtons.add(handButton1);
         handButtons.add(handButton2);
@@ -75,9 +77,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         handButtons.add(handButton5);
         handButtons.add(handButton6);
         handButtons.add(handButton7);
-    }//adds the buttons in the hands to the hashtable that holds them at the index of their value
+    }
 
-    /**
+    /** toast
+     * creates a message to show the user
      *
      * @param message
      */
@@ -89,20 +92,11 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         toast.show();
     }
 
-    /**
-     *
-     * @param name
-     */
     public DominoHumanPlayer(String name) {
         super(name);
         this.hand = new ArrayList<>();
     }
 
-    /**
-     *
-     * @param info
-     * 		the message
-     */
     @Override
     public void receiveInfo(GameInfo info) {
 
@@ -182,10 +176,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     }//receiveInfo
 
-    /**
-     *
-     * @param button
-     */
     @Override
     public void onClick(View button) {
         switch (button.getId()) {
@@ -227,11 +217,6 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
 
-    /**
-     *
-     *
-     * @param activity
-     */
     @Override
     public void setAsGui(GameMainActivity activity) {
         // Remember the activity
@@ -258,23 +243,26 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         for (int i = 0; i < boardButtons.length; i++) {
             TableRow tableRow = new TableRow(getTopView().getContext());
             for (int j = 0; j < boardButtons.length; j++) {
+                // Creates new image button and sets its tag to row and col
                 boardButtons[i][j] = new ImageButton(getTopView().getContext());
                 boardButtons[i][j].setTag(i+"_"+j);
 
-                tableRow.addView(boardButtons[i][j]);
-                boardButtons[i][j].getBackground().setAlpha(20);
+                tableRow.addView(boardButtons[i][j]);// add button to table row
+                boardButtons[i][j].getBackground().setAlpha(20); // set opacity
 
+                // Hardcoded parameters for imageBoardButtons
                 boardButtons[i][j].getLayoutParams().width=100;
                 boardButtons[i][j].getLayoutParams().height=80;
 
-
+                // setOnClickListener for the board button
                 boardButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View btn) {
+                        // Gets row and col of board clicked button
                         row = getRowFromTag((String) btn.getTag());
                         col = getColFromTag((String) btn.getTag());
 
-                        Log.d("BoardClicked", row + " " + col);
+                        Log.d("BoardClicked", row + " " + col);// Log click for debug
 
                         if (dominoClicked != -1) {
                             switch (rotationNum) {
@@ -320,21 +308,17 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
     }//setAsGui
 
     /**
+     * Lab instructor Bryan Schief helped with this method and getColFromTag in get
+     * the row and col that the user clicked in order to place a domino.
      *
      * @param tag
-     * @return
+     * @return tag
      */
     private int getRowFromTag(String tag) {
-
         String[] rowAndColumn = tag.split("_");
         return Integer.parseInt(rowAndColumn[0]);
     }
 
-    /**
-     *
-     * @param tag
-     * @return
-     */
     private int getColFromTag(String tag) {
         String[] rowAndColumn = tag.split("_");
         return Integer.parseInt(rowAndColumn[1]);
@@ -342,6 +326,12 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     /**
      * callback method--called when we are notified that the game is over
+     *
+     * Our lab instructor Bryan Schlief and TA helped with creating the end pop-up message
+     * to the user. The idea to use a pop-up choice was my idea but Bryan helped with the method
+     * choice and calls to execute properly.
+     *
+     * @author britdannen
      *
      * @param msg
      * 		the "game over" message sent by the game
