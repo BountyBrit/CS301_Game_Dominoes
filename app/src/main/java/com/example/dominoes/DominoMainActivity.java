@@ -16,9 +16,9 @@ import java.util.ArrayList;
  *
  * DominoMainActivity is the primary activity for Domino's
  *
- * DominoMainActivty consist of the playertypes that is wether you want to play with dumb
- * or smart AI. Since our game consits of 4 players, it leaves the player the option to choose wether they
- * would be smart or dumb.
+ * DominoMainActivty consist of the playertypes that is whether you want to play with dumb
+ * or smart AI. Since our game must consist of 4 players, it leaves the player the option to
+ * choose whether they would be smart or dumb.
  * Creates the Local Game aswell.
  *
  * @author britdannen
