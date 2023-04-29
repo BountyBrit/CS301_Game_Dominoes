@@ -91,6 +91,11 @@ public class DominoGameState extends GameState {
         ArrayList<Domino> currHand = new ArrayList<>();
         return currHand;
     }
+
+    /**rotatePlayer
+     *
+     * @return
+     */
     public boolean rotatePlayer() {
         if(currentPlayer == 3) {
             currentPlayer = 0;
@@ -143,6 +148,11 @@ public class DominoGameState extends GameState {
     //Calls the current/players turn
     public int getCurrentPlayer() { return currentPlayer; }
 
+    /**removeDominoFromHand
+     *
+     * @param playerIndx
+     * @param domino_clicked
+     */
     public void removeDominoFromHand(int playerIndx, int domino_clicked) {
         // Sets the end values to -1
         // toString in Domino will return empty string if end values are -1
@@ -150,6 +160,16 @@ public class DominoGameState extends GameState {
         getPlayerHand(playerIndx).get(domino_clicked).setEnd2(-1);
     }
 
+    /**placeDomino
+     *
+     * @param playerIndex
+     * @param domino
+     * @param domino_clicked
+     * @param row1
+     * @param col1
+     * @param row2
+     * @param col2
+     */
     public void placeDomino(int playerIndex, Domino domino, int domino_clicked, int row1, int col1, int row2, int col2) {
         setBoardSlot(row1, col1, domino.getEnd1());
         setBoardSlot(row2, col2, domino.getEnd2());

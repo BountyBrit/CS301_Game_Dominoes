@@ -97,6 +97,11 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
         this.hand = new ArrayList<>();
     }
 
+    /**reciveInfo
+     *
+     * @param info
+     * 		the message
+     */
     @Override
     public void receiveInfo(GameInfo info) {
 
@@ -176,6 +181,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     }//receiveInfo
 
+    /**onClick
+     *
+     * @param button
+     */
     @Override
     public void onClick(View button) {
         switch (button.getId()) {
@@ -217,6 +226,10 @@ public class DominoHumanPlayer extends GameHumanPlayer implements View.OnClickLi
 
     public View getTopView() {return myActivity.findViewById(R.id.top_gui_layout);}
 
+    /**setAsGui
+     *
+     * @param activity
+     */
     @Override
     public void setAsGui(GameMainActivity activity) {
         // Remember the activity

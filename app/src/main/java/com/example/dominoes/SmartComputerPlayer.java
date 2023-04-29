@@ -22,6 +22,12 @@ public class SmartComputerPlayer extends GameComputerPlayer {
     }
     DominoGameState dgs;
     private final int EMPTY = -1;
+
+    /**reciveInfo
+     *
+     * @param info
+     * 			the object representing the information from the game
+     */
     @Override
     protected void receiveInfo(GameInfo info) {
         dgs = new DominoGameState((DominoGameState)info);
@@ -45,7 +51,12 @@ public class SmartComputerPlayer extends GameComputerPlayer {
         }
     }
 
-
+    /**aiMove
+     *
+     * @param board
+     * @param hand
+     * @return
+     */
     protected int[] aiMove(int[][] board, ArrayList<Domino> hand) {
         int side1 = EMPTY;
         int side2 = EMPTY;
