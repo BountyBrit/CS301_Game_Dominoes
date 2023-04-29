@@ -47,10 +47,10 @@ public class DominoMainActivity extends GameMainActivity{
             public GamePlayer createPlayer(String name) {
                 return new DominoHumanPlayer(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player") {
-            public GamePlayer createPlayer(String name) { return new DominoComputerPlayer(name); }});
+        playerTypes.add(new GamePlayerType("Dumb Computer Player") {
+            public GamePlayer createPlayer(String name) { return new DominoDumbComputerPlayer(name); }});
         playerTypes.add(new GamePlayerType("Smart Computer Player"){
-            public GamePlayer createPlayer(String name) { return new SmartComputerPlayer(name); }});
+            public GamePlayer createPlayer(String name) { return new DominoSmartComputerPlayer(name); }});
 
 
         // Create a game configuration class for Domino:

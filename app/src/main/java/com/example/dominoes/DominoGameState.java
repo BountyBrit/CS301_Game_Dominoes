@@ -56,7 +56,7 @@ public class DominoGameState extends GameState {
             }
         }
 
-        //Deal seven dominoes to each player within the Hashtable
+        // Deal seven dominoes to each player within the Hashtable
         ArrayList<Domino> player1Hand = new ArrayList<>();
         ArrayList<Domino> player2Hand = new ArrayList<>();
         ArrayList<Domino> player3Hand = new ArrayList<>();
